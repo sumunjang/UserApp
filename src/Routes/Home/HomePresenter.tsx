@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Container = styled.div``;
 
@@ -16,7 +17,7 @@ const Logo = styled.div`
   margin-right: 50px;
 `;
 
-const Pass = styled.div``;
+const Pass = styled(Link)``;
 
 const Search = styled.div``;
 
@@ -32,7 +33,7 @@ const HomePresenter: React.FunctionComponent = () => {
       <Header>
         <Home>홈</Home>
         <Logo>로고</Logo>
-        <Pass>출입증</Pass>
+        <Pass to="/pass/123">출입증</Pass>
       </Header>
       <Search>장소 검색</Search>
       <PlaceContainer>
