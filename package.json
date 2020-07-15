@@ -29,7 +29,7 @@
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build"
   },
-  "homepage": "https://sumunjang.github.io/UserApp",
+  "homepage": "https://priceless-euclid-46e536.netlify.app/",
   "eslintConfig": {
     "extends": "react-app"
   },
