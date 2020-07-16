@@ -4,6 +4,7 @@ import Home from "../Routes/Home";
 import Search from "../Routes/Search";
 import Form from "../Routes/Form";
 import User from "../Routes/User";
+import Auth from "../Routes/Auth";
 
 const Router: React.FunctionComponent = () => (
   <BrowserRouter>
@@ -12,6 +13,7 @@ const Router: React.FunctionComponent = () => (
       <Route path="/search" component={Search} />
       <Route path="/form" component={Form} />
       <Route path="/user" component={User} />
+      <Route path="/auth" component={Auth} />
       <Redirect from="*" to="/" />
     </Switch>
   </BrowserRouter>

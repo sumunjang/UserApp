@@ -15,6 +15,9 @@ const UserVisitedPlaceFormList = "/user/visited-form-list/:userid/:placeid";
 const UserVisitedForm = "/user/visited-form/:placeid/:formid";
 const UserCreate = "/user/create";
 
+// Auth
+const UserLogin = "/auth/login";
+
 export default {
   Home,
   UserPass,
@@ -25,4 +28,5 @@ export default {
   UserVisitedPlaceFormList,
   UserVisitedForm,
   UserCreate,
+  UserLogin,
 };
