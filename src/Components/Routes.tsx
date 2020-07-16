@@ -1,12 +1,17 @@
+// 홈
 const Home = "/";
 
+// 검색
 const SearchMain = "/search";
 const SearchResult = "/search/result";
 
+// Form
 const Form = "/form/:placeid";
 
+// 유저
 const UserPass = "/user/pass/:userid";
 const UserVisitedList = "/user/visited-list/:userid";
+const UserVisitedPlaceFormList = "/user/visited-form-list/:userid/:placeid";
 
 export default {
   Home,
@@ -15,4 +20,5 @@ export default {
   SearchMain,
   SearchResult,
   Form,
+  UserVisitedPlaceFormList,
 };
