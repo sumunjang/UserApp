@@ -32,3 +32,10 @@ export default {
   UserLogin,
   UserEditProfile,
 };
+
+// 서버 관련 routes
+const serverCreateUser = "/auth/signup";
+
+export const ServerRoutes = {
+  serverCreateUser,
+};
