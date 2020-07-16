@@ -5,7 +5,6 @@ import UserPass from "./UserPass";
 import UserVisitedList from "./UserVisitedList";
 import UserVisitedPlaceFormList from "./UserVisitedPlaceFormList";
 import UserVistiedForm from "./UserVistiedForm";
-import UserCreate from "./UserCreate";
 import UserEditProfile from "./UserEditProfile";
 
 const Router: React.FunctionComponent = () => (
@@ -18,7 +17,6 @@ const Router: React.FunctionComponent = () => (
       component={UserVisitedPlaceFormList}
     />
     <Route path={Routes.UserVisitedForm} exact component={UserVistiedForm} />
-    <Route path={Routes.UserCreate} exact component={UserCreate} />
     <Route path={Routes.UserEditProfile} exact component={UserEditProfile} />
   </>
 );

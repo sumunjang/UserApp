@@ -13,11 +13,11 @@ const UserPass = "/user/pass/:userid";
 const UserVisitedList = "/user/visited-list/:userid";
 const UserVisitedPlaceFormList = "/user/visited-form-list/:userid/:placeid";
 const UserVisitedForm = "/user/visited-form/:placeid/:formid";
-const UserCreate = "/user/create";
 const UserEditProfile = "/user/profile/edit";
 
 // Auth
 const UserLogin = "/auth/login";
+const UserCreate = "/auth/create";
 
 export default {
   Home,
