@@ -4,6 +4,7 @@ import Routes from "../../Components/Routes";
 import UserPass from "./UserPass";
 import UserVisitedList from "./UserVisitedList";
 import UserVisitedPlaceFormList from "./UserVisitedPlaceFormList";
+import UserVistiedForm from "./UserVistiedForm";
 
 const Router: React.FunctionComponent = () => (
   <>
@@ -14,6 +15,7 @@ const Router: React.FunctionComponent = () => (
       exact
       component={UserVisitedPlaceFormList}
     />
+    <Route path={Routes.UserVisitedForm} exact component={UserVistiedForm} />
   </>
 );
 

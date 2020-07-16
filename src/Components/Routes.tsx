@@ -12,6 +12,7 @@ const Form = "/form/:placeid";
 const UserPass = "/user/pass/:userid";
 const UserVisitedList = "/user/visited-list/:userid";
 const UserVisitedPlaceFormList = "/user/visited-form-list/:userid/:placeid";
+const UserVisitedForm = "/user/visited-form/:placeid/:formid";
 
 export default {
   Home,
@@ -21,4 +22,5 @@ export default {
   SearchResult,
   Form,
   UserVisitedPlaceFormList,
+  UserVisitedForm,
 };
