@@ -12,7 +12,7 @@ const Back = styled(Link)``;
 
 const SearchBar = styled.input``;
 
-const Search = styled.div``;
+const Search = styled(Link)``;
 
 const SearchHistory = styled.div``;
 
@@ -22,7 +22,7 @@ const SearchPresenter: React.FunctionComponent = () => {
       <Header>
         <Back to="/">뒤로</Back>
         <SearchBar type="text" />
-        <Search>검색하기</Search>
+        <Search to="/search/result">검색하기</Search>
       </Header>
       <SearchHistory>검색기록</SearchHistory>
     </Container>

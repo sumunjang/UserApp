@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Routes from "../../Components/Routes";
+import { Link } from "react-router-dom";
 
 const Conatiner = styled.div``;
 
@@ -7,7 +9,7 @@ const Header = styled.div`
   display: flex;
 `;
 const Logo = styled.div``;
-const Cancel = styled.div``;
+const Cancel = styled(Link)``;
 
 const Article = styled.article``;
 const Photo = styled.div``;
@@ -21,7 +23,7 @@ const PassPresenter: React.FunctionComponent = () => {
     <Conatiner>
       <Header>
         <Logo>로고</Logo>
-        <Cancel>취소</Cancel>
+        <Cancel to={Routes.Home}>취소</Cancel>
       </Header>
       <Article>
         <Photo>프로필 사진</Photo>

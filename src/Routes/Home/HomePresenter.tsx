@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Routes from "../../Components/Routes";
 
 const Container = styled.div``;
 
@@ -33,9 +34,9 @@ const HomePresenter: React.FunctionComponent = () => {
       <Header>
         <Home>홈</Home>
         <Logo>로고</Logo>
-        <Pass to="/pass/123">출입증</Pass>
+        <Pass to={Routes.Pass.replace(":id", "123")}>출입증</Pass>
       </Header>
-      <Search to="/search">장소 검색</Search>
+      <Search to={Routes.SearchMain}>장소 검색</Search>
       <PlaceContainer>
         <PlaceCard>시설이름 | 시설위치 | 방문날짜, 시간</PlaceCard>
       </PlaceContainer>
