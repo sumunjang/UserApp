@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Routes from "../../Components/Routes";
+import Routes from "../../../Components/Routes";
 import { Link } from "react-router-dom";
 
 const Conatiner = styled.div``;
@@ -18,7 +18,7 @@ const Information = styled.div``;
 const Nav = styled.nav``;
 const Watermark = styled.nav``;
 
-const PassPresenter: React.FunctionComponent = () => {
+const UserPassPresenter: React.FunctionComponent = () => {
   return (
     <Conatiner>
       <Header>
@@ -36,4 +36,4 @@ const PassPresenter: React.FunctionComponent = () => {
   );
 };
 
-export default PassPresenter;
+export default UserPassPresenter;

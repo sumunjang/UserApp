@@ -34,7 +34,7 @@ const HomePresenter: React.FunctionComponent = () => {
       <Header>
         <Home>홈</Home>
         <Logo>로고</Logo>
-        <Pass to={Routes.Pass.replace(":id", "123")}>출입증</Pass>
+        <Pass to={Routes.UserPass.replace(":userid", "123")}>출입증</Pass>
       </Header>
       <Search to={Routes.SearchMain}>장소 검색</Search>
       <PlaceContainer>
