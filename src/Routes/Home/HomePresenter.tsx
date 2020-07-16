@@ -19,7 +19,7 @@ const Logo = styled.div`
 
 const Pass = styled(Link)``;
 
-const Search = styled.div``;
+const Search = styled(Link)``;
 
 const PlaceContainer = styled.div``;
 
@@ -35,7 +35,7 @@ const HomePresenter: React.FunctionComponent = () => {
         <Logo>로고</Logo>
         <Pass to="/pass/123">출입증</Pass>
       </Header>
-      <Search>장소 검색</Search>
+      <Search to="/search">장소 검색</Search>
       <PlaceContainer>
         <PlaceCard>시설이름 | 시설위치 | 방문날짜, 시간</PlaceCard>
       </PlaceContainer>
