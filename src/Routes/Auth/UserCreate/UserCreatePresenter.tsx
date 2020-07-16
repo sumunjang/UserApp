@@ -3,43 +3,60 @@ import styled from "styled-components";
 import Routes from "../../../Components/Routes";
 import { Link } from "react-router-dom";
 
-const Conatiner = styled.div``;
+const Conatiner = styled.div`
+  margin: 20px 10px;
+`;
 
 const Header = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
 `;
-const Logo = styled.div``;
-const Cancel = styled(Link)``;
+const Logo = styled.div`
+  margin: 0px 100px;
+`;
+const Cancel = styled.div``;
 
 const Article = styled.article``;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
 const Label = styled.label``;
 const Photo = styled.input``;
 const Name = styled.input``;
 const Id = styled.input``;
 const Password1 = styled.input``;
 const Password2 = styled.input``;
+const Submit = styled.button``;
 
-const Nav = styled.nav``;
-const Submit = styled.nav``;
+interface IProps {
+  onSubmit(e: React.FormEvent): void;
+  goBack(): void;
+}
 
-const UserCreatePresenter: React.FunctionComponent = () => {
+const UserCreatePresenter: React.FunctionComponent<IProps> = ({
+  onSubmit,
+  goBack,
+}) => {
   return (
     <Conatiner>
       <Header>
         <Logo>로고</Logo>
-        <Cancel to={Routes.Home}>취소</Cancel>
+        <Cancel onClick={goBack}>뒤로</Cancel>
       </Header>
       <Article>
-        <Label htmlFor="photo" />
-        <Photo type="image" id="photo" />
-        <Name type="text" />
-        <Id type="text" />
-        <Password1 type="password" />
-        <Password2 type="password" />
+        <Form onSubmit={onSubmit}>
+          <Label htmlFor="photo" />
+          <Photo type="file" id="photo" accept="image/*" />
+          <Name type="text" placeholder="이름" />
+          <Id type="text" placeholder="아이디" />
+          <Password1 type="password" placeholder="패스워드" />
+          <Password2 type="password" placeholder="패스워드 확인" />
+          <Submit>회원가입하기</Submit>
+        </Form>
       </Article>
-      <Nav>
-        <Submit>회원가입하기</Submit>
-      </Nav>
     </Conatiner>
   );
 };
