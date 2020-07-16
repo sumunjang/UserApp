@@ -19,6 +19,7 @@ const Article = styled.div``;
 const InputId = styled.input``;
 const InputPassword = styled.input``;
 const SubmitLogin = styled(Link)``;
+const CreateUserLink = styled(Link)``;
 
 const UserLoginPresenter: React.FunctionComponent = () => {
   return (
@@ -30,6 +31,7 @@ const UserLoginPresenter: React.FunctionComponent = () => {
         <InputId placeholder="아이디" />
         <InputPassword placeholder="패스워드" />
         <SubmitLogin to={Routes.Home}>로그인</SubmitLogin>
+        <CreateUserLink to={Routes.UserCreate}>회원가입하기</CreateUserLink>
       </Article>
     </Container>
   );
