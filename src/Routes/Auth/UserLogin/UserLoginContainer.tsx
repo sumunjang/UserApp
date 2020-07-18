@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import API from "../../../Components/API";
 import UserLoginPresenter from "./UserLoginPresenter";
+import LoginCookies from "../../../Components/Cookies/LoginCookies";
 
 interface IProps extends RouteComponentProps<any> {
   /* other props for ChildComponent */
@@ -24,10 +25,10 @@ const UserLoginContainer: React.FunctionComponent<IProps> = ({ history }) => {
       });
       history.push("/home");
     } catch (e) {
-      console.log("error");
       setState({
         error: true,
       });
+      LoginCookies.setLoginCookies(undefined);
     }
   };
 
