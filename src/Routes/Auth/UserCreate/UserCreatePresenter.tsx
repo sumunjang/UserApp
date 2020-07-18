@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Routes from "../../../Components/Routes";
-import { Link } from "react-router-dom";
 
 const Conatiner = styled.div`
   margin: 20px 10px;

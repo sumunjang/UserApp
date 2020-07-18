@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import UserCreatePresenter from "./UserCreatePresenter";
 import Api from "../../../Components/API";
 import { RouteComponentProps } from "react-router-dom";
@@ -13,11 +13,6 @@ interface IProps extends RouteComponentProps<any> {
 }
 
 const UserPassContainer: React.FunctionComponent<IProps> = ({ history }) => {
-  const [state, setState] = useState<IState>({
-    loading: true,
-    error: false,
-  });
-
   const goBack = () => {
     history.goBack();
   };

@@ -1,12 +1,11 @@
 import React from "react";
 import Router from "../src/Components/Router";
 import { Provider } from "react-redux";
-import store from "../src/Components/Redux/store";
-import CheckLogin from "./Components/CheckLogin";
+import Store from "./Components/Redux/Store";
 
 const App: React.FunctionComponent = () => (
   <>
-    <Provider store={store}>
+    <Provider store={Store}>
       <Router />
     </Provider>
   </>

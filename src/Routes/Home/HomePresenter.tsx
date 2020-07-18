@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Routes from "../../Components/Routes";
+import { connect } from "react-redux";
 
 const Container = styled.div``;
 
@@ -28,7 +29,13 @@ const PlaceCard = styled.div``;
 
 const GotoQRcode = styled.div``;
 
-const HomePresenter: React.FunctionComponent = () => {
+interface IProps {
+  state: {
+    username: string;
+  };
+}
+
+const HomePresenter: React.FunctionComponent<IProps> = ({ state }) => {
   return (
     <Container>
       <Header>
@@ -38,6 +45,7 @@ const HomePresenter: React.FunctionComponent = () => {
       </Header>
       <Search to={Routes.SearchMain}>장소 검색</Search>
       <PlaceContainer>
+        <div>유저 이름 : {state.username}</div>
         <PlaceCard>시설이름 | 시설위치 | 방문날짜, 시간</PlaceCard>
       </PlaceContainer>
       <GotoQRcode>QR코드로 문진표 작성하기</GotoQRcode>
@@ -45,4 +53,10 @@ const HomePresenter: React.FunctionComponent = () => {
   );
 };
 
-export default HomePresenter;
+function mapStateToProps(state: any) {
+  return { state };
+}
+
+// function mapDispatchToProps(dispatch: any, ownProps: any) {}
+
+export default connect(mapStateToProps)(HomePresenter);

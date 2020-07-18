@@ -7,7 +7,6 @@ const CheckLogin = (): boolean => {
   } else {
     return true;
   }
-  return true;
 };
 
 export default CheckLogin;
