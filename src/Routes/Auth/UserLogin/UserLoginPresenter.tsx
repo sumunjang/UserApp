@@ -1,44 +1,12 @@
 import React from "react";
-import styled from "styled-components";
 import Routes from "../../../Components/Routes";
-import { Link } from "react-router-dom";
-
-const Container = styled.div``;
-
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 200px;
-  margin-bottom: 50px;
-`;
-const Logo = styled.div`
-  margin-left: 50px;
-  margin-right: 50px;
-`;
-
-const Article = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const SubmitLoginForm = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-const InputId = styled.input``;
-const InputPassword = styled.input``;
-const SubmitLogin = styled.button`
-  text-align: center;
-`;
-const CreateUserLink = styled(Link)`
-  text-align: center;
-`;
-
-const Nav = styled.div``;
-const Message = styled.div``;
+import { Container, Headers, Articles, Navs } from "./UserLoginStyle";
+import Alert from "@material-ui/lab/Alert";
 
 interface IProps {
   onLogin(e: React.FormEvent): void;
+  changeInputId(e: React.ChangeEvent): void;
+  changeInputPassword(e: React.ChangeEvent): void;
   state: {
     error: boolean;
   };
@@ -47,21 +15,48 @@ interface IProps {
 const UserLoginPresenter: React.FunctionComponent<IProps> = ({
   onLogin,
   state,
+  changeInputId,
+  changeInputPassword,
 }) => {
   return (
     <Container>
-      <Header>
-        <Logo>로고</Logo>
-      </Header>
-      <Article>
-        <SubmitLoginForm onSubmit={onLogin}>
-          <InputId placeholder="아이디" />
-          <InputPassword placeholder="패스워드" type="password" />
-          <SubmitLogin>로그인</SubmitLogin>
-        </SubmitLoginForm>
-        <CreateUserLink to={Routes.UserCreate}>회원가입하기</CreateUserLink>
-      </Article>
-      <Nav>{state.error ? <Message>로그인 실패</Message> : ""}</Nav>
+      <Headers.Header>
+        <Headers.Logo></Headers.Logo>
+      </Headers.Header>
+      <Articles.Article>
+        <Articles.SubmitLoginForm onSubmit={onLogin}>
+          <Articles.InputIdContainer>
+            <Articles.InputId
+              label="아이디"
+              variant="outlined"
+              onChange={changeInputId}
+            />
+          </Articles.InputIdContainer>
+          <Articles.InputPasswordContainer>
+            <Articles.InputPassword
+              label="패스워드"
+              type="password"
+              variant="outlined"
+              onChange={changeInputPassword}
+            />
+          </Articles.InputPasswordContainer>
+          <Articles.NavBtnContainer>
+            <Articles.SubmitLoginContainer>
+              <Articles.SubmitLogin variant="contained" type="submit">
+                로그인
+              </Articles.SubmitLogin>
+            </Articles.SubmitLoginContainer>
+            <Articles.CreateUserLink to={Routes.UserCreate}>
+              <Articles.CreateUserBtn variant="contained" color="primary">
+                회원가입하기
+              </Articles.CreateUserBtn>
+            </Articles.CreateUserLink>
+          </Articles.NavBtnContainer>
+        </Articles.SubmitLoginForm>
+      </Articles.Article>
+      <Navs.Nav>
+        {state.error ? <Alert severity="error">로그인 실패</Alert> : ""}
+      </Navs.Nav>
     </Container>
   );
 };
