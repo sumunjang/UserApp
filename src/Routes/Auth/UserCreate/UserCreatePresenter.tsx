@@ -1,60 +1,69 @@
 import React from "react";
-import styled from "styled-components";
-
-const Conatiner = styled.div`
-  margin: 20px 10px;
-`;
-
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 50px;
-`;
-const Logo = styled.div`
-  margin: 0px 100px;
-`;
-const Cancel = styled.div``;
-
-const Article = styled.article``;
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-const Label = styled.label``;
-const Photo = styled.input``;
-const Name = styled.input``;
-const Id = styled.input``;
-const Password1 = styled.input``;
-const Password2 = styled.input``;
-const Submit = styled.button``;
+import { Headers, Conatiner, Articles } from "./UserCreateStyle";
+import Alert from "@material-ui/lab/Alert";
 
 interface IProps {
   onSubmit(e: React.FormEvent): void;
-  goBack(): void;
+  changeInputName(e: React.ChangeEvent): void;
+  changeInputId(e: React.ChangeEvent): void;
+  changeInputPassword(e: React.ChangeEvent): void;
+  changeInputPassword2(e: React.ChangeEvent): void;
+  state: any;
 }
 
 const UserCreatePresenter: React.FunctionComponent<IProps> = ({
   onSubmit,
-  goBack,
+  changeInputName,
+  changeInputId,
+  changeInputPassword,
+  changeInputPassword2,
+  state,
 }) => {
   return (
     <Conatiner>
-      <Header>
-        <Logo>로고</Logo>
-        <Cancel onClick={goBack}>뒤로</Cancel>
-      </Header>
-      <Article>
-        <Form onSubmit={onSubmit}>
-          <Label htmlFor="photo" />
-          <Photo type="file" id="photo" accept="image/*" />
-          <Name type="text" placeholder="이름" />
-          <Id type="text" placeholder="아이디" />
-          <Password1 type="password" placeholder="패스워드" />
-          <Password2 type="password" placeholder="패스워드 확인" />
-          <Submit>회원가입하기</Submit>
-        </Form>
-      </Article>
+      <Headers.Header>
+        <Headers.Logo>회원가입</Headers.Logo>
+      </Headers.Header>
+      <Articles.Article>
+        <Articles.Form onSubmit={onSubmit}>
+          <Articles.Photo type="file" accept="image/*" />
+          <Articles.Name
+            label="이름"
+            variant="outlined"
+            onChange={changeInputName}
+          />
+          <Articles.Id
+            label="아이디"
+            variant="outlined"
+            onChange={changeInputId}
+          />
+          <Articles.Password1
+            label="패스워드"
+            variant="outlined"
+            type="password"
+            onChange={changeInputPassword}
+          />
+          <Articles.Password2
+            label="패스워드 확인"
+            variant="outlined"
+            type="password"
+            onChange={changeInputPassword2}
+          />
+          <Articles.Submit variant="contained" color="primary" type="submit">
+            회원가입하기
+          </Articles.Submit>
+          {state.errorState === "error" ? (
+            <Alert severity="error">{state.errorMessage}</Alert>
+          ) : (
+            ""
+          )}
+          {state.errorState === "success" ? (
+            <Alert severity="success">{state.errorMessage}</Alert>
+          ) : (
+            ""
+          )}
+        </Articles.Form>
+      </Articles.Article>
     </Conatiner>
   );
 };

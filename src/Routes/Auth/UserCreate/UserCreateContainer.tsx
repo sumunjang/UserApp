@@ -2,40 +2,96 @@ import React from "react";
 import UserCreatePresenter from "./UserCreatePresenter";
 import Api from "../../../Components/API";
 import { RouteComponentProps } from "react-router-dom";
+import { connect } from "react-redux";
+import { ReduxActions } from "../../../Components/Redux/Store";
+import { CreateUserMessages } from "../../../Components/Messages";
 
 interface IState {
-  loading: Boolean;
-  error: Boolean;
+  inputName: string;
+  inputId: string;
+  inputPassword: string;
+  inputPassword2: string;
+  errorState: string;
+  errorMessage: string;
 }
 
 interface IProps extends RouteComponentProps<any> {
-  /* other props for ChildComponent */
+  setMessage: Function;
+  reduxState: {
+    message: string;
+  };
 }
 
-const UserPassContainer: React.FunctionComponent<IProps> = ({ history }) => {
-  const goBack = () => {
-    history.goBack();
+class UserPassContainer extends React.Component<IProps> {
+  state = {
+    inputName: "",
+    inputId: "",
+    inputPassword: "",
+    inputPassword2: "",
+    error: false,
   };
 
-  const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const childrenNodes = (e.target as HTMLButtonElement).children;
-    const name = (childrenNodes[2] as HTMLInputElement).value;
-    const id = (childrenNodes[3] as HTMLInputElement).value;
-    const password1 = (childrenNodes[4] as HTMLInputElement).value;
-    const password2 = (childrenNodes[5] as HTMLInputElement).value;
+  changeInputName = (e: React.ChangeEvent) => {
+    this.setState({
+      inputName: (e.target as HTMLInputElement).value,
+    });
+  };
+  changeInputId = (e: React.ChangeEvent) => {
+    this.setState({
+      inputId: (e.target as HTMLInputElement).value,
+    });
+  };
+  changeInputPassword = (e: React.ChangeEvent) => {
+    this.setState({
+      inputPassword: (e.target as HTMLInputElement).value,
+    });
+  };
+  changeInputPassword2 = (e: React.ChangeEvent) => {
+    this.setState({
+      inputPassword2: (e.target as HTMLInputElement).value,
+    });
+  };
 
-    if (password1 === password2) {
-      console.log("정상적인 입력");
+  onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (this.state.inputPassword === this.state.inputPassword2) {
       await Api.Auth.UserCreateApi({
-        nickname: id,
-        password: password1,
-        name: name,
+        nickname: this.state.inputName,
+        password: this.state.inputId,
+        name: this.state.inputPassword,
+      });
+      this.props.setMessage(CreateUserMessages.CreateUserSuccess);
+      this.props.history.push("/");
+    } else {
+      this.setState({
+        errorState: "error",
+        errorMessage: "패스워드가 다릅니다.",
       });
     }
   };
 
-  return <UserCreatePresenter onSubmit={onSubmit} goBack={goBack} />;
-};
+  render = () => {
+    return (
+      <UserCreatePresenter
+        onSubmit={this.onSubmit}
+        changeInputName={this.changeInputName}
+        changeInputId={this.changeInputId}
+        changeInputPassword={this.changeInputPassword}
+        changeInputPassword2={this.changeInputPassword2}
+        state={this.state}
+      />
+    );
+  };
+}
 
-export default UserPassContainer;
+function mapStateToProps(state: any) {
+  return { reduxState: state };
+}
+
+function mapDispatchToProps(dispatch: any, ownProps: any) {
+  return {
+    setMessage: (message: string) => dispatch(ReduxActions.setMessage(message)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserPassContainer);

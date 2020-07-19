@@ -1,7 +1,7 @@
 import { createStore } from "redux";
 
 const SetUserData = "userUserData" as const;
-const GetUserData = "getUserData" as const;
+const SetMessage = "setMessage" as const;
 
 interface SetUserDataAction {
   type: typeof SetUserData;
@@ -10,31 +10,34 @@ interface SetUserDataAction {
   };
 }
 
-interface GetUserDataAction {
-  type: typeof GetUserData;
+interface SetMessageAction {
+  type: typeof SetMessage;
+  payload: {
+    message: string;
+  };
 }
 
 const setUserData = (userName: string) => {
   return { type: SetUserData, payload: { userName } };
 };
 
-const getUserData = () => {
-  return { type: GetUserData };
+const setMessage = (message: string) => {
+  return { type: SetMessage, payload: { message } };
 };
 
-type Action = SetUserDataAction | GetUserDataAction;
+type Action = SetUserDataAction | SetMessageAction;
 
 export const ReduxActions = {
   setUserData,
-  getUserData,
+  setMessage,
 };
 
 const reducer = (state = {}, action: Action) => {
   switch (action.type) {
     case SetUserData:
-      return { username: action.payload.userName };
-    case GetUserData:
-      return {};
+      return { ...state, username: action.payload.userName };
+    case SetMessage:
+      return { ...state, message: action.payload.message };
     default:
       return state;
   }

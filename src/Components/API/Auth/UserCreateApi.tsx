@@ -15,10 +15,6 @@ interface ServerResponse {
 
 export default function post<ServerResponse>(data: ServerData) {
   return BaseApi.post(ServerRoutes.serverCreateUser, data)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    .then(function (response) {})
+    .catch(function (error) {});
 }

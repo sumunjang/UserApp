@@ -8,7 +8,8 @@ interface IProps {
   changeInputId(e: React.ChangeEvent): void;
   changeInputPassword(e: React.ChangeEvent): void;
   state: {
-    error: boolean;
+    errorState: string;
+    errorMessage: string;
   };
 }
 
@@ -55,7 +56,16 @@ const UserLoginPresenter: React.FunctionComponent<IProps> = ({
         </Articles.SubmitLoginForm>
       </Articles.Article>
       <Navs.Nav>
-        {state.error ? <Alert severity="error">로그인 실패</Alert> : ""}
+        {state.errorState === "error" ? (
+          <Alert severity="error">{state.errorMessage}</Alert>
+        ) : (
+          ""
+        )}
+        {state.errorState === "success" ? (
+          <Alert severity="success">{state.errorMessage}</Alert>
+        ) : (
+          ""
+        )}
       </Navs.Nav>
     </Container>
   );
