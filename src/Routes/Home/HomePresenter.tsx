@@ -1,33 +1,10 @@
 import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
 import Routes from "../../Components/Routes";
 import { connect } from "react-redux";
-
-const Container = styled.div``;
-
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Home = styled.div``;
-
-const Logo = styled.div`
-  margin-left: 50px;
-  margin-right: 50px;
-`;
-
-const Pass = styled(Link)``;
-
-const Search = styled(Link)``;
-
-const PlaceContainer = styled.div``;
-
-const PlaceCard = styled.div``;
-
-const GotoQRcode = styled.div``;
+import { Container, Headers, Articles, Navs } from "./HomeStyle";
+import MenuDrawer from "./Components/MenuDrawer";
+import PlaceCard from "./Components/PlaceCard";
+import SearchIcon from "@material-ui/icons/Search";
 
 interface IProps {
   state: {
@@ -36,19 +13,52 @@ interface IProps {
 }
 
 const HomePresenter: React.FunctionComponent<IProps> = ({ state }) => {
+  const { Header, MenuBar, Logo, Pass } = Headers;
+  const {
+    Article,
+    PlaceContainer,
+    Title,
+    SearchContainer,
+    SearchBar,
+    SearchInput,
+    SearchIconContainer,
+    SearchList,
+    SearchItem,
+    SearchHistory,
+  } = Articles;
+  const { Nav, GotoQRcode } = Navs;
+
   return (
     <Container>
       <Header>
-        <Home>홈</Home>
-        <Logo>로고</Logo>
+        <MenuBar>
+          <MenuDrawer />
+        </MenuBar>
+        <Logo>수문장</Logo>
         <Pass to={Routes.UserPass.replace(":userid", "123")}>출입증</Pass>
       </Header>
-      <Search to={Routes.SearchMain}>장소 검색</Search>
-      <PlaceContainer>
-        <div>유저 이름 : {state.username}</div>
-        <PlaceCard>시설이름 | 시설위치 | 방문날짜, 시간</PlaceCard>
-      </PlaceContainer>
-      <GotoQRcode>QR코드로 문진표 작성하기</GotoQRcode>
+      <Article>
+        <SearchContainer>
+          <SearchBar>
+            <SearchInput />
+            <SearchIconContainer>
+              <SearchIcon />
+            </SearchIconContainer>
+            <SearchList>
+              <SearchHistory>
+                <PlaceCard />
+              </SearchHistory>
+            </SearchList>
+          </SearchBar>
+        </SearchContainer>
+        <PlaceContainer>
+          <Title>최근 작성했던 문진표</Title>
+          <PlaceCard />
+        </PlaceContainer>
+      </Article>
+      <Nav>
+        <GotoQRcode>QR코드로 문진표 작성하기</GotoQRcode>
+      </Nav>
     </Container>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import Routes from "../../../Components/Routes";
 import { Container, Headers, Articles, Navs } from "./UserLoginStyle";
 import Alert from "@material-ui/lab/Alert";
+import Message from "../../../Components/Message";
 
 interface IProps {
   onLogin(e: React.FormEvent): void;
@@ -56,16 +57,10 @@ const UserLoginPresenter: React.FunctionComponent<IProps> = ({
         </Articles.SubmitLoginForm>
       </Articles.Article>
       <Navs.Nav>
-        {state.errorState === "error" ? (
-          <Alert severity="error">{state.errorMessage}</Alert>
-        ) : (
-          ""
-        )}
-        {state.errorState === "success" ? (
-          <Alert severity="success">{state.errorMessage}</Alert>
-        ) : (
-          ""
-        )}
+        <Message
+          errorState={state.errorState}
+          errorMessage={state.errorMessage}
+        />
       </Navs.Nav>
     </Container>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import { Headers, Conatiner, Articles } from "./UserCreateStyle";
-import Alert from "@material-ui/lab/Alert";
+import Message from "../../../Components/Message";
 
 interface IProps {
   onSubmit(e: React.FormEvent): void;
@@ -52,16 +52,10 @@ const UserCreatePresenter: React.FunctionComponent<IProps> = ({
           <Articles.Submit variant="contained" color="primary" type="submit">
             회원가입하기
           </Articles.Submit>
-          {state.errorState === "error" ? (
-            <Alert severity="error">{state.errorMessage}</Alert>
-          ) : (
-            ""
-          )}
-          {state.errorState === "success" ? (
-            <Alert severity="success">{state.errorMessage}</Alert>
-          ) : (
-            ""
-          )}
+          <Message
+            errorState={state.errorState}
+            errorMessage={state.errorMessage}
+          />
         </Articles.Form>
       </Articles.Article>
     </Conatiner>

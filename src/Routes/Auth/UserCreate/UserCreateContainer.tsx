@@ -54,18 +54,25 @@ class UserPassContainer extends React.Component<IProps> {
 
   onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (this.state.inputPassword === this.state.inputPassword2) {
-      await Api.Auth.UserCreateApi({
-        nickname: this.state.inputName,
-        password: this.state.inputId,
-        name: this.state.inputPassword,
-      });
-      this.props.setMessage(CreateUserMessages.CreateUserSuccess);
-      this.props.history.push("/");
-    } else {
+    try {
+      if (this.state.inputPassword === this.state.inputPassword2) {
+        await Api.Auth.UserCreateApi({
+          name: this.state.inputName,
+          userid: this.state.inputId,
+          password: this.state.inputPassword,
+        });
+        this.props.setMessage(CreateUserMessages.CreateUserSuccess);
+        this.props.history.push("/");
+      } else {
+        this.setState({
+          errorState: "error",
+          errorMessage: "패스워드가 다릅니다.",
+        });
+      }
+    } catch {
       this.setState({
         errorState: "error",
-        errorMessage: "패스워드가 다릅니다.",
+        errorMessage: "회원가입에 문제가 있습니다",
       });
     }
   };

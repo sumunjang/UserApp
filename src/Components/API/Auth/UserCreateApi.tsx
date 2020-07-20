@@ -2,7 +2,7 @@ import { ServerRoutes } from "../../Routes";
 import BaseApi from "../BaseApi";
 
 interface ServerData {
-  nickname: string;
+  userid: string;
   password: string;
   name: string;
 }
@@ -14,7 +14,7 @@ interface ServerResponse {
 }
 
 export default function post<ServerResponse>(data: ServerData) {
-  return BaseApi.post(ServerRoutes.serverCreateUser, data)
-    .then(function (response) {})
-    .catch(function (error) {});
+  return BaseApi.post(ServerRoutes.serverCreateUser, data).then(function (
+    response
+  ) {});
 }

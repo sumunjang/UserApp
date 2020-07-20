@@ -8,9 +8,9 @@ interface IProps extends RouteComponentProps<any> {
 }
 
 const HomeContainer: React.FunctionComponent<IProps> = ({ history }) => {
-  if (CheckLogin() === false) {
-    history.push("/");
-  }
+  // if (CheckLogin() === false) {
+  //   history.push("/");
+  // }
   return <HomePresenter />;
 };
 
