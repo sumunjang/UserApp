@@ -1,11 +1,13 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
-import API from "../../../Components/API";
-import UserLoginPresenter from "./UserLoginPresenter";
-import LoginCookies from "../../../Components/Cookies/LoginCookies";
 import { connect } from "react-redux";
+import API from "../../../Components/API";
+import Routes from "../../../Components/Routes";
+import LoginCookies from "../../../Components/Cookies/LoginCookies";
 import { ReduxActions } from "../../../Components/Redux/Store";
 import { CreateUserMessages } from "../../../Components/Messages";
+import CheckLogin from "../../../Components/CheckLogin";
+import UserLoginPresenter from "./UserLoginPresenter";
 
 interface IProps extends RouteComponentProps<any> {
   state: any;
@@ -61,6 +63,10 @@ class UserLoginContainer extends React.Component<IProps, IState> {
   };
 
   componentDidMount() {
+    console.log(CheckLogin());
+    if (CheckLogin()) {
+      this.props.history.push(Routes.UserLogin);
+    }
     if (this.props.reduxState.message) {
       if (
         this.props.reduxState.message === CreateUserMessages.CreateUserSuccess

@@ -1,5 +1,5 @@
 // 홈
-const Home = "/";
+const Home = "/home";
 
 // 검색
 const SearchMain = "/search";
@@ -14,9 +14,11 @@ const UserVisitedList = "/user/visited-list/:userid";
 const UserVisitedPlaceFormList = "/user/visited-form-list/:userid/:placeid";
 const UserVisitedForm = "/user/visited-form/:placeid/:formid";
 const UserEditProfile = "/user/profile/edit";
+const UserProfile = "/user/profile";
+const UserDelete = "/user/delete";
 
 // Auth
-const UserLogin = "/auth/login";
+const UserLogin = "/";
 const UserCreate = "/auth/create";
 
 export default {
@@ -31,6 +33,8 @@ export default {
   UserCreate,
   UserLogin,
   UserEditProfile,
+  UserProfile,
+  UserDelete,
 };
 
 // 서버 관련 routes

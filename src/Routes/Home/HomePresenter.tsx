@@ -23,7 +23,6 @@ const HomePresenter: React.FunctionComponent<IProps> = ({ state }) => {
     SearchInput,
     SearchIconContainer,
     SearchList,
-    SearchItem,
     SearchHistory,
   } = Articles;
   const { Nav, GotoQRcode } = Navs;

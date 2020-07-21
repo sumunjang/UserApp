@@ -6,7 +6,9 @@ import ListItem from "@material-ui/core/ListItem";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { Link } from "react-router-dom";
+import Routes from "../../../Components/Routes";
 
 interface IState {
   isOpen: boolean;
@@ -38,9 +40,9 @@ export default class MenuBar extends React.Component<{}, IState> {
       onKeyDown={this.toggleDrawer(false)}
     >
       <List>
-        <ListItem button component={Link} to="/profile">
+        <ListItem button component={Link} to={Routes.UserProfile}>
           <ListItemIcon>
-            <InboxIcon />
+            <AccountCircleIcon />
           </ListItemIcon>
           <ListItemText primary={"프로필"} />
         </ListItem>
