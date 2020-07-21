@@ -5,12 +5,12 @@ import { AxiosResponse } from "axios";
 import Store, { ReduxActions } from "../../Redux/Store";
 
 interface ServerResponse {
-  userName: string;
-  token: string;
+  username: string;
+  tokens: string;
 }
 
 interface ServerData {
-  nickname: string;
+  userid: string;
   password: string;
 }
 
@@ -18,7 +18,7 @@ const PostLogin = (data: ServerData) =>
   BaseApi.post(ServerRoutes.serverLogin, data).then(
     (response: AxiosResponse<ServerResponse>) => {
       Cookies.LoginCookies.setLoginCookies(response.data);
-      Store.dispatch(ReduxActions.setUserData(response.data.userName));
+      Store.dispatch(ReduxActions.setUserData(response.data.username));
     }
   );
 

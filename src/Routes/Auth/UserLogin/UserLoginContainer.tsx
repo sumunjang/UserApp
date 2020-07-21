@@ -47,7 +47,7 @@ class UserLoginContainer extends React.Component<IProps, IState> {
     const { inputId, inputPassword } = this.state;
     try {
       await API.Auth.UserLoginApi({
-        nickname: inputId,
+        userid: inputId,
         password: inputPassword,
       });
       this.props.history.push("/home");
