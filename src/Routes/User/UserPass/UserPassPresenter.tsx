@@ -1,47 +1,39 @@
 import React from "react";
-import TextLoop from "react-text-loop";
-import { Conatiner, Headers, Articles, Navs } from "./UserPassStyle";
+import styled from "styled-components";
+import Routes from "../../../Components/Routes";
+import { Link } from "react-router-dom";
 
-interface IProps {
-  handleClickBack(e: React.MouseEvent): void;
-}
+const Conatiner = styled.div``;
 
-export default class UserPassPresenter extends React.Component<IProps> {
-  render = () => {
-    const { Header, Logo, Cancel } = Headers;
-    const {
-      Article,
-      InformationContainer,
-      PlaceName,
-      UserName,
-      VisitTime,
-      CurrentTime,
-    } = Articles;
-    const { Nav, Watermark } = Navs;
+const Header = styled.div`
+  display: flex;
+`;
+const Logo = styled.div``;
+const Cancel = styled(Link)``;
 
-    return (
-      <Conatiner>
-        <Header>
-          <Logo>수문장</Logo>
-          <Cancel onClick={this.props.handleClickBack}>뒤로가기</Cancel>
-        </Header>
-        <Article>
-          <InformationContainer>
-            <PlaceName>시설명</PlaceName>
-            <UserName>이름</UserName>
-            <VisitTime>출입시간</VisitTime>
-            <CurrentTime>현재시간</CurrentTime>
-          </InformationContainer>
-        </Article>
-        <Nav>
-          <Watermark>
-            <TextLoop interval={1000}>
-              <span>이 문장이 움직이면 정상적인 출입증입니다.</span>
-              <span>이 문장이 움직이면 정상적인 출입증입니다.</span>
-            </TextLoop>
-          </Watermark>
-        </Nav>
-      </Conatiner>
-    );
-  };
-}
+const Article = styled.article``;
+const Photo = styled.div``;
+const Information = styled.div``;
+
+const Nav = styled.nav``;
+const Watermark = styled.nav``;
+
+const UserPassPresenter: React.FunctionComponent = () => {
+  return (
+    <Conatiner>
+      <Header>
+        <Logo>로고</Logo>
+        <Cancel to={Routes.Home}>취소</Cancel>
+      </Header>
+      <Article>
+        <Photo>프로필 사진</Photo>
+        <Information>시설명 이름 정보 출입시간 현재시간</Information>
+      </Article>
+      <Nav>
+        <Watermark>워터마크 애니메이션</Watermark>
+      </Nav>
+    </Conatiner>
+  );
+};
+
+export default UserPassPresenter;

@@ -7,10 +7,7 @@ const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  padding: 10px 10px;
-  background-color: #364c86;
-  color: white;
+  margin: 25px 10px;
 `;
 const MenuBar = styled.div``;
 const Logo = styled.div`
@@ -112,11 +109,9 @@ const Nav = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid black;
-  background-color: #364c86;
 `;
 const GotoQRcode = styled.div`
   font-size: 20px;
-  color: white;
 `;
 export const Navs = {
   Nav,
