@@ -35,10 +35,7 @@ const InformationContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 50px;
-  border: 1px solid #364c86;
-  width: 50%;
-  padding: 20px 0px;
+  width: 100%;
 `;
 const PlaceName = styled.div`
   margin-bottom: 20px;
@@ -50,6 +47,37 @@ const VisitTime = styled.div`
   margin-bottom: 20px;
 `;
 const CurrentTime = styled.div``;
+const UserInformationContainer = styled.div`
+  padding: 20px;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #364c86;
+  margin-bottom: 30px;
+`;
+const PlaceInformationContainer = styled.div`
+  padding: 20px;
+  border: 1px solid #364c86;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+const PlaceAddress = styled.div``;
+const Title = styled.div`
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #364c86;
+  margin-bottom: 20px;
+  margin-top: 20px;
+`;
 export const Articles = {
   Article,
   Photo,
@@ -58,6 +86,10 @@ export const Articles = {
   UserName,
   VisitTime,
   CurrentTime,
+  UserInformationContainer,
+  PlaceInformationContainer,
+  PlaceAddress,
+  Title,
 };
 
 const Nav = styled.nav`

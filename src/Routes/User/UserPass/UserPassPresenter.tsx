@@ -16,6 +16,10 @@ export default class UserPassPresenter extends React.Component<IProps> {
       UserName,
       VisitTime,
       CurrentTime,
+      UserInformationContainer,
+      PlaceInformationContainer,
+      PlaceAddress,
+      Title,
     } = Articles;
     const { Nav, Watermark } = Navs;
 
@@ -27,10 +31,17 @@ export default class UserPassPresenter extends React.Component<IProps> {
         </Header>
         <Article>
           <InformationContainer>
-            <PlaceName>시설명</PlaceName>
-            <UserName>이름</UserName>
-            <VisitTime>출입시간</VisitTime>
-            <CurrentTime>현재시간</CurrentTime>
+            <Title>유저 정보</Title>
+            <UserInformationContainer>
+              <UserName>이름</UserName>
+              <VisitTime>출입시간</VisitTime>
+              <CurrentTime>현재시간</CurrentTime>
+            </UserInformationContainer>
+            <Title>시설 정보</Title>
+            <PlaceInformationContainer>
+              <PlaceName>시설명</PlaceName>
+              <PlaceAddress>시설 위치</PlaceAddress>
+            </PlaceInformationContainer>
           </InformationContainer>
         </Article>
         <Nav>
