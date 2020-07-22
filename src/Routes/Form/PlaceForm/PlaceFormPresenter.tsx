@@ -2,8 +2,22 @@ import React from "react";
 import Routes from "../../../Components/Routes";
 import MenuDrawer from "../../Home/Components/MenuDrawer";
 import { Container, Headers, Articles, Navs } from "./PlaceFormStyle";
+import Cards from "./Components/Cards";
 
-export default class PlaceFormPresenter extends React.Component {
+interface IState {
+  answers: Array<string>;
+}
+
+interface IProps {
+  questions: Array<{ questionid: number; question: string }>;
+  handleSubmit(e: React.FormEvent): void;
+  handleChangeAnswer(e: React.ChangeEvent, questionid: number): void;
+}
+
+export default class PlaceFormPresenter extends React.Component<
+  IProps,
+  IState
+> {
   render = () => {
     const { Header, MenuBar, Logo, Cancel } = Headers;
     const {
@@ -32,35 +46,16 @@ export default class PlaceFormPresenter extends React.Component {
         <Article>
           <InformationContainer>
             <Title>시설 요구 정보</Title>
-            <UserInformationContainer>
-              <UserName>질문</UserName>
-              <VisitTime>답변</VisitTime>
-            </UserInformationContainer>
-            <UserInformationContainer>
-              <UserName>질문</UserName>
-              <VisitTime>답변</VisitTime>
-            </UserInformationContainer>
-            <UserInformationContainer>
-              <UserName>질문</UserName>
-              <VisitTime>답변</VisitTime>
-            </UserInformationContainer>
-            <Title>고정 문진표</Title>
-            <PlaceInformationContainer>
-              <PlaceName>질문</PlaceName>
-              <PlaceAddress>답변</PlaceAddress>
-            </PlaceInformationContainer>
-            <PlaceInformationContainer>
-              <PlaceName>질문</PlaceName>
-              <PlaceAddress>답변</PlaceAddress>
-            </PlaceInformationContainer>
-            <PlaceInformationContainer>
-              <PlaceName>질문</PlaceName>
-              <PlaceAddress>답변</PlaceAddress>
-            </PlaceInformationContainer>
+            <Cards
+              questions={this.props.questions}
+              onChangeAnswer={this.props.handleChangeAnswer}
+            />
           </InformationContainer>
         </Article>
         <Nav>
-          <SubmitForm>문진표 제출하기</SubmitForm>
+          <SubmitForm onClick={this.props.handleSubmit}>
+            문진표 제출하기
+          </SubmitForm>
         </Nav>
       </Container>
     );
