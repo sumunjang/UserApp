@@ -3,7 +3,7 @@ const Home = "/home";
 
 // 검색
 const SearchMain = "/search";
-const SearchResult = "/search/result";
+const SearchResult = "/search/:keyword";
 
 // Form
 const Form = "/form/:placeid";

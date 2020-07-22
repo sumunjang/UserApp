@@ -1,8 +1,16 @@
 import React from "react";
 import SearchResultPresenter from "./SearchResultPresenter";
+import { RouteComponentProps } from "react-router-dom";
 
-const SearchResultContainer: React.FunctionComponent = () => {
-  return <SearchResultPresenter />;
-};
+interface IProps extends RouteComponentProps {}
 
-export default SearchResultContainer;
+interface IKeyword {
+  keyword: string;
+}
+
+export default class SearchResultContainer extends React.Component<IProps> {
+  render = () => {
+    const { keyword } = this.props.match.params as IKeyword;
+    return <SearchResultPresenter keyword={keyword} />;
+  };
+}

@@ -1,32 +1,54 @@
 import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import SearchPlaces from "../../../Components/API/Places/SearchPlaces";
+import { Headers, Articles, Container } from "./SearchResultStyle";
+import MenuDrawer from "../../Home/Components/MenuDrawer";
+import Routes from "../../../Components/Routes";
+import ResultCard from "../Components/ResultCard";
+import Cookies from "../../../Components/Cookies";
 
-const Container = styled.div``;
+interface IProps {
+  keyword: string;
+}
 
-const Header = styled.div`
-  display: flex;
-`;
+interface IState {
+  results: any;
+}
 
-const Back = styled(Link)``;
+export default class SearchResultPresenter extends React.Component<
+  IProps,
+  IState
+> {
+  state = {
+    results: null,
+  };
 
-const SearchBar = styled.input``;
+  componentDidMount = async () => {
+    const results = await SearchPlaces(this.props.keyword);
+    this.setState({
+      results: results.data,
+    });
+  };
 
-const Search = styled(Link)``;
+  render = () => {
+    const { Header, MenuBar, Logo, Cancel } = Headers;
+    const { Article, SearchKeywordContainer, Keyword } = Articles;
 
-const SearchHistory = styled.div``;
-
-const SearchResultPresenter: React.FunctionComponent = () => {
-  return (
-    <Container>
-      <Header>
-        <Back to="/">뒤로</Back>
-        <SearchBar type="text" />
-        <Search to="/search/result">검색하기</Search>
-      </Header>
-      <SearchHistory>검색결과</SearchHistory>
-    </Container>
-  );
-};
-
-export default SearchResultPresenter;
+    return (
+      <Container>
+        <Header>
+          <MenuBar>
+            <MenuDrawer />
+          </MenuBar>
+          <Logo>검색결과</Logo>
+          <Cancel to={Routes.Home}>홈으로</Cancel>
+        </Header>
+        <Article>
+          <SearchKeywordContainer>
+            <Keyword>{this.props.keyword}</Keyword>
+          </SearchKeywordContainer>
+          <ResultCard results={this.state.results} />
+        </Article>
+      </Container>
+    );
+  };
+}

@@ -7,8 +7,10 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import { Link } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 import Routes from "../../../Components/Routes";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import LoginCookies from "../../../Components/Cookies/LoginCookies";
 
 interface IState {
   isOpen: boolean;
@@ -31,6 +33,11 @@ export default class MenuBar extends React.Component<{}, IState> {
     }
 
     this.setState({ ...this.state, isOpen: open });
+  };
+
+  handleClickLogout = (e: React.MouseEvent) => {
+    LoginCookies.setLoginCookies(undefined);
+    window.location.href = "/";
   };
 
   list = () => (
@@ -66,6 +73,15 @@ export default class MenuBar extends React.Component<{}, IState> {
             <MailIcon />
           </ListItemIcon>
           <ListItemText primary={"Mail"} />
+        </ListItem>
+      </List>
+      <Divider />
+      <List>
+        <ListItem button onClick={this.handleClickLogout}>
+          <ListItemIcon>
+            <ExitToAppIcon />
+          </ListItemIcon>
+          <ListItemText primary={"로그아웃"} />
         </ListItem>
       </List>
     </div>

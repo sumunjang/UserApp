@@ -2,7 +2,7 @@ import Cookies from "universal-cookie";
 
 interface LoginData {
   username: string;
-  tokens: string;
+  token: string;
 }
 
 const setLoginCookies = (data: any): void => {
