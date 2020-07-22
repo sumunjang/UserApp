@@ -13,8 +13,8 @@ const Header = styled.div`
   margin-bottom: 50px;
 `;
 const Logo = styled.div`
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 40px;
   background-image: url(${LogoImage});
   background-position: center;
   background-size: cover;
