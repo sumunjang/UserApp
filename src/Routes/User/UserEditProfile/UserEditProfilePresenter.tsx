@@ -11,7 +11,7 @@ interface IProps {
   state: any;
 }
 
-class UserEditProfilePresenter extends React.Component<IProps> {
+export default class UserEditProfilePresenter extends React.Component<IProps> {
   render = () => {
     const { Header, Logo, Cancel, MenuBar } = Headers;
     const { Article, Title, TitleContainer } = Articles;
@@ -55,5 +55,3 @@ class UserEditProfilePresenter extends React.Component<IProps> {
     );
   };
 }
-
-export default UserEditProfilePresenter;

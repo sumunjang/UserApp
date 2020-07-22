@@ -4,8 +4,8 @@ import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
+import RoomIcon from "@material-ui/icons/Room";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { Link, RouteComponentProps } from "react-router-dom";
 import Routes from "../../../Components/Routes";
@@ -56,9 +56,9 @@ export default class MenuBar extends React.Component<{}, IState> {
       </List>
       <Divider />
       <List>
-        <ListItem button component={Link} to="/profile">
+        <ListItem button component={Link} to={Routes.UserVisitedList}>
           <ListItemIcon>
-            <InboxIcon />
+            <RoomIcon />
           </ListItemIcon>
           <ListItemText primary={"최근방문장소"} />
         </ListItem>

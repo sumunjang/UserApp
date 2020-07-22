@@ -10,7 +10,7 @@ const PlaceForm = "/form/:placeid";
 
 // 유저
 const UserPass = "/user/pass/:userid";
-const UserVisitedList = "/user/visited-list/:userid";
+const UserVisitedList = "/user/visits";
 const UserVisitedPlaceFormList = "/user/visited-form-list/:userid/:placeid";
 const UserVisitedForm = "/user/visited-form/:placeid/:formid";
 const UserEditProfile = "/user/profile/edit";

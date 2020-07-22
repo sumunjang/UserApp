@@ -1,35 +1,30 @@
 import React from "react";
-import styled from "styled-components";
 import Routes from "../../../Components/Routes";
-import { Link } from "react-router-dom";
+import { Conatiner, Headers, Articles } from "./UserVistiedListStyle";
+import MenuDrawer from "../../Home/Components/MenuDrawer";
+import Card from "./Components/Card";
 
-const Conatiner = styled.div``;
+export default class UserVistiedListPresenter extends React.Component {
+  render = () => {
+    const { Header, Logo, MenuBar, Cancel } = Headers;
+    const { Article, Title, TitleContainer } = Articles;
 
-const Header = styled.div`
-  display: flex;
-`;
-const Menu = styled.div``;
-const Logo = styled.div``;
-const Cancel = styled(Link)``;
-
-const Article = styled.article``;
-const Title = styled.div``;
-const Information = styled.div``;
-
-const UserVistiedListPresenter: React.FunctionComponent = () => {
-  return (
-    <Conatiner>
-      <Header>
-        <Menu>메뉴</Menu>
-        <Logo>로고</Logo>
-        <Cancel to={Routes.Home}>뒤로가기</Cancel>
-      </Header>
-      <Article>
-        <Title>방문 장소 리스트</Title>
-        <Information>방문한 장소 리스트 </Information>
-      </Article>
-    </Conatiner>
-  );
-};
-
-export default UserVistiedListPresenter;
+    return (
+      <Conatiner>
+        <Header>
+          <MenuBar>
+            <MenuDrawer />
+          </MenuBar>
+          <Logo>수문장</Logo>
+          <Cancel to={Routes.Home}>홈으로</Cancel>
+        </Header>
+        <Article>
+          <TitleContainer>
+            <Title>최근방문장소</Title>
+          </TitleContainer>
+          <Card />
+        </Article>
+      </Conatiner>
+    );
+  };
+}
