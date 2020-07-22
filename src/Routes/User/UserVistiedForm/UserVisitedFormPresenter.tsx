@@ -1,37 +1,65 @@
 import React from "react";
-import styled from "styled-components";
 import Routes from "../../../Components/Routes";
-import { Link } from "react-router-dom";
+import { Container, Headers, Articles, Navs } from "./UsreVistiedFormStyle";
+import MenuDrawer from "../../Home/Components/MenuDrawer";
 
-const Conatiner = styled.div``;
+export default class UserVisitedFormPresenter extends React.Component {
+  render = () => {
+    const { Header, MenuBar, Logo, Cancel } = Headers;
+    const {
+      Article,
+      InformationContainer,
+      Title,
+      UserInformationContainer,
+      UserName,
+      VisitTime,
+      CurrentTime,
+      PlaceInformationContainer,
+      PlaceName,
+      PlaceAddress,
+    } = Articles;
+    const { Nav, SubmitForm } = Navs;
 
-const Header = styled.div`
-  display: flex;
-`;
-const Menu = styled.div``;
-const Logo = styled.div``;
-const Cancel = styled(Link)``;
-
-const Article = styled.article``;
-const Title = styled.div``;
-const Information = styled.div``;
-
-const UserVisitedFormPresenter: React.FunctionComponent = () => {
-  return (
-    <Conatiner>
-      <Header>
-        <Menu>이전</Menu>
-        <Logo>시설이름</Logo>
-        <Cancel to={Routes.Home}>홈</Cancel>
-      </Header>
-      <Article>
-        <Title>시설 요구정보</Title>
-        <Information>질문, 답변</Information>
-        <Title>증상 문진표</Title>
-        <Information>질문, 답변</Information>
-      </Article>
-    </Conatiner>
-  );
-};
-
-export default UserVisitedFormPresenter;
+    return (
+      <Container>
+        <Header>
+          <MenuBar>
+            <MenuDrawer />
+          </MenuBar>
+          <Logo>작성했던 문진표</Logo>
+          <Cancel to={Routes.Home}>홈으로</Cancel>
+        </Header>
+        <Article>
+          <InformationContainer>
+            <Title>시설 요구 정보</Title>
+            <UserInformationContainer>
+              <UserName>질문</UserName>
+              <VisitTime>답변</VisitTime>
+            </UserInformationContainer>
+            <UserInformationContainer>
+              <UserName>질문</UserName>
+              <VisitTime>답변</VisitTime>
+            </UserInformationContainer>
+            <UserInformationContainer>
+              <UserName>질문</UserName>
+              <VisitTime>답변</VisitTime>
+            </UserInformationContainer>
+            <Title>고정 문진표</Title>
+            <PlaceInformationContainer>
+              <PlaceName>질문</PlaceName>
+              <PlaceAddress>답변</PlaceAddress>
+            </PlaceInformationContainer>
+            <PlaceInformationContainer>
+              <PlaceName>질문</PlaceName>
+              <PlaceAddress>답변</PlaceAddress>
+            </PlaceInformationContainer>
+            <PlaceInformationContainer>
+              <PlaceName>질문</PlaceName>
+              <PlaceAddress>답변</PlaceAddress>
+            </PlaceInformationContainer>
+          </InformationContainer>
+        </Article>
+      </Container>
+    );
+  };
+}

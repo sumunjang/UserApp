@@ -6,11 +6,12 @@ import {
   Typography,
   Divider,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 export default class PlaceCard extends React.Component {
   render = () => (
     <List>
-      <ListItem alignItems="flex-start">
+      <ListItem alignItems="flex-start" component={Link} to="/user/visits/1/1">
         <ListItemText
           primary="숭실대학교"
           secondary={
