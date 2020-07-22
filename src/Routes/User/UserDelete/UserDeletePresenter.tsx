@@ -6,6 +6,7 @@ import { Button } from "@material-ui/core";
 
 interface IProps {
   handleCancelBtn(e: React.MouseEvent): void;
+  handleDeleteBtn(e: React.MouseEvent): void;
 }
 
 export default class UserDeletePresenter extends React.Component<IProps> {
@@ -36,7 +37,12 @@ export default class UserDeletePresenter extends React.Component<IProps> {
           </ProfileContainer>
           <Btns>
             <EditProfileBtn>
-              <Button variant="outlined" color="primary" size="large">
+              <Button
+                variant="outlined"
+                color="primary"
+                size="large"
+                onClick={this.props.handleDeleteBtn}
+              >
                 탈퇴
               </Button>
             </EditProfileBtn>
