@@ -6,7 +6,7 @@ const SearchMain = "/search";
 const SearchResult = "/search/:keyword";
 
 // Form
-const Form = "/form/:placeid";
+const PlaceForm = "/form/:placeid";
 
 // 유저
 const UserPass = "/user/pass/:userid";
@@ -27,7 +27,7 @@ export default {
   UserVisitedList,
   SearchMain,
   SearchResult,
-  Form,
+  PlaceForm,
   UserVisitedPlaceFormList,
   UserVisitedForm,
   UserCreate,

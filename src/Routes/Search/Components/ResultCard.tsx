@@ -9,9 +9,13 @@ import {
 
 interface IProps {
   results: any;
+  push: Function;
 }
 
 export default class PlaceCard extends React.Component<IProps> {
+  handleOnClickItem = (placeid: string) => {
+    this.props.push(`/form/${placeid}`);
+  };
   render = () => (
     <>
       {this.props.results &&
@@ -30,6 +34,9 @@ export default class PlaceCard extends React.Component<IProps> {
                       위치: {result.address}
                     </Typography>
                   </React.Fragment>
+                }
+                onClick={(e: React.MouseEvent) =>
+                  this.handleOnClickItem(result.placeid)
                 }
               />
             </ListItem>

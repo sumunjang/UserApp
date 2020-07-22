@@ -1,11 +1,11 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import Form from "./Form";
+import PlaceForm from "./PlaceForm";
 import Routes from "../../Components/Routes";
 
 const Router: React.FunctionComponent = () => (
   <>
-    <Route path={Routes.Form} exact component={Form} />
+    <Route path={Routes.PlaceForm} exact component={PlaceForm} />
   </>
 );
 

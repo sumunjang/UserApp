@@ -9,8 +9,11 @@ interface IKeyword {
 }
 
 export default class SearchResultContainer extends React.Component<IProps> {
+  handleOnClickItem = (e: React.MouseEvent) => {};
   render = () => {
     const { keyword } = this.props.match.params as IKeyword;
-    return <SearchResultPresenter keyword={keyword} />;
+    return (
+      <SearchResultPresenter keyword={keyword} push={this.props.history.push} />
+    );
   };
 }

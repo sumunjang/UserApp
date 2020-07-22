@@ -8,6 +8,7 @@ import Cookies from "../../../Components/Cookies";
 
 interface IProps {
   keyword: string;
+  push: Function;
 }
 
 interface IState {
@@ -46,7 +47,7 @@ export default class SearchResultPresenter extends React.Component<
           <SearchKeywordContainer>
             <Keyword>{this.props.keyword}</Keyword>
           </SearchKeywordContainer>
-          <ResultCard results={this.state.results} />
+          <ResultCard results={this.state.results} push={this.props.push} />
         </Article>
       </Container>
     );

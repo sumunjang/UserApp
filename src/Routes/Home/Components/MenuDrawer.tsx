@@ -53,12 +53,6 @@ export default class MenuBar extends React.Component<{}, IState> {
           </ListItemIcon>
           <ListItemText primary={"프로필"} />
         </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <MailIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Mail"} />
-        </ListItem>
       </List>
       <Divider />
       <List>
@@ -66,13 +60,7 @@ export default class MenuBar extends React.Component<{}, IState> {
           <ListItemIcon>
             <InboxIcon />
           </ListItemIcon>
-          <ListItemText primary={"프로필"} />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <MailIcon />
-          </ListItemIcon>
-          <ListItemText primary={"Mail"} />
+          <ListItemText primary={"최근방문장소"} />
         </ListItem>
       </List>
       <Divider />
