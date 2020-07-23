@@ -4,6 +4,7 @@ import { Conatiner, Headers, Articles, Navs } from "./UserPassStyle";
 
 interface IProps {
   handleClickBack(e: React.MouseEvent): void;
+  data: any;
 }
 
 export default class UserPassPresenter extends React.Component<IProps> {
@@ -22,6 +23,7 @@ export default class UserPassPresenter extends React.Component<IProps> {
       Title,
     } = Articles;
     const { Nav, Watermark } = Navs;
+    const { placedata, userdata } = this.props.data;
 
     return (
       <Conatiner>
@@ -33,14 +35,16 @@ export default class UserPassPresenter extends React.Component<IProps> {
           <InformationContainer>
             <Title>유저 정보</Title>
             <UserInformationContainer>
-              <UserName>이름</UserName>
-              <VisitTime>출입시간</VisitTime>
-              <CurrentTime>현재시간</CurrentTime>
+              <UserName>{userdata && userdata.username}</UserName>
+              <VisitTime>
+                방문시간 : {placedata && placedata.visittime}
+              </VisitTime>
+              <CurrentTime>현재시간 : {Date().toLocaleString()}</CurrentTime>
             </UserInformationContainer>
             <Title>시설 정보</Title>
             <PlaceInformationContainer>
-              <PlaceName>시설명</PlaceName>
-              <PlaceAddress>시설 위치</PlaceAddress>
+              <PlaceName>{placedata && placedata.placename}</PlaceName>
+              <PlaceAddress>{placedata && placedata.address}</PlaceAddress>
             </PlaceInformationContainer>
           </InformationContainer>
         </Article>
