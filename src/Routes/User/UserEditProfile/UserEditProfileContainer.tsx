@@ -1,5 +1,9 @@
 import React from "react";
 import UserEditProfilePresetner from "./UserEditProfilePresenter";
+import API from "../../../Components/API";
+import { RouteComponentProps } from "react-router-dom";
+
+interface IProps extends RouteComponentProps {}
 
 interface IState {
   Password: string;
@@ -8,7 +12,7 @@ interface IState {
   errorMessage: string;
 }
 
-class UserEditProfileContainer extends React.Component<{}, IState> {
+class UserEditProfileContainer extends React.Component<IProps, IState> {
   state = {
     Password: "",
     Password2: "",
@@ -17,27 +21,24 @@ class UserEditProfileContainer extends React.Component<{}, IState> {
   };
   onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // try {
-    //   if (this.state.inputPassword === this.state.inputPassword2) {
-    //     await Api.Auth.UserCreateApi({
-    //       name: this.state.inputName,
-    //       userid: this.state.inputId,
-    //       password: this.state.inputPassword,
-    //     });
-    //     this.props.setMessage(CreateUserMessages.CreateUserSuccess);
-    //     this.props.history.push("/");
-    //   } else {
-    //     this.setState({
-    //       errorState: "error",
-    //       errorMessage: "패스워드가 다릅니다.",
-    //     });
-    //   }
-    // } catch {
-    //   this.setState({
-    //     errorState: "error",
-    //     errorMessage: "회원가입에 문제가 있습니다",
-    //   });
-    // }
+    try {
+      if (this.state.Password === this.state.Password2) {
+        await API.User.UserEdit({
+          password: this.state.Password,
+        });
+        this.props.history.goBack();
+      } else {
+        this.setState({
+          errorState: "error",
+          errorMessage: "패스워드가 다릅니다.",
+        });
+      }
+    } catch {
+      this.setState({
+        errorState: "error",
+        errorMessage: "회원가입에 문제가 있습니다",
+      });
+    }
   };
   changeInputPassword = (e: React.ChangeEvent) => {
     this.setState({

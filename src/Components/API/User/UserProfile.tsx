@@ -4,7 +4,7 @@ import { AxiosResponse } from "axios";
 
 interface ServerResponse {}
 
-const UserDelete = () =>
+const UserProfile = () =>
   BaseApi.get(`/profile`, {
     headers: {
       Authorization: "Bearer " + Cookies.LoginCookies.getLoginCookies().token,
@@ -13,4 +13,4 @@ const UserDelete = () =>
     return response;
   });
 
-export default UserDelete;
+export default UserProfile;
