@@ -9,6 +9,7 @@ import SearchIcon from "@material-ui/icons/Search";
 interface IProps {
   handleClickSearch(e: React.MouseEvent): void;
   handleChangeValue(e: React.ChangeEvent): void;
+  recentlyVisits: Array<any>;
 }
 
 class HomePresenter extends React.Component<IProps> {
@@ -45,14 +46,14 @@ class HomePresenter extends React.Component<IProps> {
               </SearchIconContainer>
               <SearchList>
                 <SearchHistory>
-                  <PlaceCard />
+                  <div>검색 리스트</div>
                 </SearchHistory>
               </SearchList>
             </SearchBar>
           </SearchContainer>
           <PlaceContainer>
             <Title>최근 작성했던 문진표</Title>
-            <PlaceCard />
+            <PlaceCard recentlyVisits={this.props.recentlyVisits} />
           </PlaceContainer>
         </Article>
         <Nav>
