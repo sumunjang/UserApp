@@ -1,6 +1,6 @@
 import React from "react";
 import MenuDrawer from "../../Home/Components/MenuDrawer";
-import { Container, Headers, Articles, Navs } from "./UserEditProfileStyle";
+import { Container, Headers, Articles } from "./UserEditProfileStyle";
 import Routes from "../../../Components/Routes";
 import Message from "../../../Components/Message";
 

@@ -20,18 +20,7 @@ export default class PlaceFormPresenter extends React.Component<
 > {
   render = () => {
     const { Header, MenuBar, Logo, Cancel } = Headers;
-    const {
-      Article,
-      InformationContainer,
-      Title,
-      UserInformationContainer,
-      UserName,
-      VisitTime,
-      CurrentTime,
-      PlaceInformationContainer,
-      PlaceName,
-      PlaceAddress,
-    } = Articles;
+    const { Article, InformationContainer, Title } = Articles;
     const { Nav, SubmitForm } = Navs;
 
     return (

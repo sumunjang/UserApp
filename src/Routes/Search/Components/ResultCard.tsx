@@ -12,7 +12,7 @@ interface IProps {
   push: Function;
 }
 
-export default class PlaceCard extends React.Component<IProps> {
+export default class ResultCard extends React.Component<IProps> {
   handleOnClickItem = (placeid: string) => {
     this.props.push(`/form/${placeid}`);
   };
@@ -20,7 +20,7 @@ export default class PlaceCard extends React.Component<IProps> {
     <>
       {this.props.results &&
         this.props.results.map((result: any) => (
-          <List>
+          <List key={result.placeid}>
             <ListItem alignItems="flex-start">
               <ListItemText
                 primary={result.placename}

@@ -4,7 +4,6 @@ import { Headers, Articles, Container } from "./SearchResultStyle";
 import MenuDrawer from "../../Home/Components/MenuDrawer";
 import Routes from "../../../Components/Routes";
 import ResultCard from "../Components/ResultCard";
-import Cookies from "../../../Components/Cookies";
 
 interface IProps {
   keyword: string;
@@ -33,6 +32,7 @@ export default class SearchResultPresenter extends React.Component<
   render = () => {
     const { Header, MenuBar, Logo, Cancel } = Headers;
     const { Article, SearchKeywordContainer, Keyword } = Articles;
+    let key = 0;
 
     return (
       <Container>

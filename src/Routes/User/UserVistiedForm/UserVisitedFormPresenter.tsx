@@ -1,6 +1,6 @@
 import React from "react";
 import Routes from "../../../Components/Routes";
-import { Container, Headers, Articles, Navs } from "./UsreVistiedFormStyle";
+import { Container, Headers, Articles } from "./UsreVistiedFormStyle";
 import MenuDrawer from "../../Home/Components/MenuDrawer";
 
 export default class UserVisitedFormPresenter extends React.Component {
@@ -13,12 +13,10 @@ export default class UserVisitedFormPresenter extends React.Component {
       UserInformationContainer,
       UserName,
       VisitTime,
-      CurrentTime,
       PlaceInformationContainer,
       PlaceName,
       PlaceAddress,
     } = Articles;
-    const { Nav, SubmitForm } = Navs;
 
     return (
       <Container>

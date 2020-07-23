@@ -26,7 +26,6 @@ const UserCreatePresenter: React.FunctionComponent<IProps> = ({
       </Headers.Header>
       <Articles.Article>
         <Articles.Form onSubmit={onSubmit}>
-          <Articles.Photo type="file" accept="image/*" />
           <Articles.Name
             label="이름"
             variant="outlined"

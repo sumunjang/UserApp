@@ -1,7 +1,6 @@
 import BaseApi from "../BaseApi";
 import Cookies from "../../Cookies";
 import { AxiosResponse } from "axios";
-import Store, { ReduxActions } from "../../Redux/Store";
 
 interface ServerResponse {}
 

@@ -1,4 +1,3 @@
-import { ServerRoutes } from "../../Routes";
 import BaseApi from "../BaseApi";
 import Cookies from "../../Cookies";
 
