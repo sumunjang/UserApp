@@ -16,7 +16,10 @@ export default class PlaceFormContainer extends React.Component<IProps> {
 
   handleSubmit = async (e: React.FormEvent) => {
     const data = this.state.answers as [{ questionid: number; answer: string }];
-    await PostForm({ requestForm: data });
+    await PostForm(
+      { requestForm: data },
+      (this.props.match.params as any).placeid
+    );
     this.props.history.goBack();
   };
 
@@ -37,7 +40,7 @@ export default class PlaceFormContainer extends React.Component<IProps> {
   };
 
   componentDidMount = async () => {
-    const response = await GetForm(2);
+    const response = await GetForm((this.props.match.params as any).placeid);
     const data = (response.data as { requestForm: [] }).requestForm;
     this.setState({ ...this.state, questions: data });
   };

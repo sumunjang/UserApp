@@ -4,8 +4,8 @@ import { AxiosResponse } from "axios";
 
 interface ServerResponse {}
 
-const UserDelete = (placeid: number) =>
-  BaseApi.get(`/forms/${placeid}`, {
+const GetForm = (placeid: number) =>
+  BaseApi.get(`/form/${placeid}`, {
     headers: {
       Authorization: "Bearer " + Cookies.LoginCookies.getLoginCookies().token,
     },
@@ -13,4 +13,4 @@ const UserDelete = (placeid: number) =>
     return response;
   });
 
-export default UserDelete;
+export default GetForm;

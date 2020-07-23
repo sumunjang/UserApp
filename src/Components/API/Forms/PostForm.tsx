@@ -13,10 +13,15 @@ interface ServerData {
 
 interface ServerResponse {}
 
-export default function post<ServerResponse>(data: ServerData) {
-  return BaseApi.post("/forms/2", data, {
+export default function post<ServerResponse>(
+  data: ServerData,
+  placeid: string
+) {
+  return BaseApi.post(`/form/${placeid}`, data, {
     headers: {
       Authorization: "Bearer " + Cookies.LoginCookies.getLoginCookies().token,
     },
-  }).then(function (response) {});
+  }).then(function (response) {
+    console.log(placeid);
+  });
 }
