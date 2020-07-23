@@ -1,3 +1,4 @@
 import UserDelete from "./UserDelete";
+import UserProfile from "./UserProfile";
 
-export default { UserDelete };
+export default { UserDelete, UserProfile };

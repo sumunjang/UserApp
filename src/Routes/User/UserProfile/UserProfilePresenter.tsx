@@ -5,7 +5,16 @@ import Routes from "../../../Components/Routes";
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-class UserProfilePresenter extends React.Component {
+interface UserData {
+  userid: string;
+  username: string;
+}
+
+interface IProps {
+  userData: UserData;
+}
+
+class UserProfilePresenter extends React.Component<IProps> {
   render = () => {
     const { Header, Logo, Cancel, MenuBar } = Headers;
     const {
@@ -31,7 +40,7 @@ class UserProfilePresenter extends React.Component {
         <Article>
           <ProfileContainer>
             <Title>프로필</Title>
-            <UserName>이름</UserName>
+            <UserName>{this.props.userData.username}</UserName>
           </ProfileContainer>
           <Btns>
             <EditProfileBtn>
