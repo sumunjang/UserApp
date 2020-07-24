@@ -5,6 +5,7 @@ import MenuDrawer from "../../Home/Components/MenuDrawer";
 
 interface IProps {
   push: Function;
+  visitInformation: any;
 }
 
 export default class UserVisitedFormPresenter extends React.Component<IProps> {
@@ -22,6 +23,8 @@ export default class UserVisitedFormPresenter extends React.Component<IProps> {
       PlaceAddress,
     } = Articles;
 
+    const { requestForm } = this.props.visitInformation;
+
     return (
       <Container>
         <Header>
@@ -34,18 +37,13 @@ export default class UserVisitedFormPresenter extends React.Component<IProps> {
         <Article>
           <InformationContainer>
             <Title>시설 요구 정보</Title>
-            <UserInformationContainer>
-              <UserName>질문</UserName>
-              <VisitTime>답변</VisitTime>
-            </UserInformationContainer>
-            <UserInformationContainer>
-              <UserName>질문</UserName>
-              <VisitTime>답변</VisitTime>
-            </UserInformationContainer>
-            <UserInformationContainer>
-              <UserName>질문</UserName>
-              <VisitTime>답변</VisitTime>
-            </UserInformationContainer>
+            {requestForm &&
+              requestForm.map((questionInformation: any) => (
+                <UserInformationContainer>
+                  <UserName>{questionInformation.question}</UserName>
+                  <VisitTime>{questionInformation.answer}</VisitTime>
+                </UserInformationContainer>
+              ))}
             <Title>고정 문진표</Title>
             <PlaceInformationContainer>
               <PlaceName>질문</PlaceName>

@@ -6,25 +6,20 @@ import {
   Typography,
   Divider,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
 
 interface IProps {
-  recentlyVisits: Array<any>;
+  keywords: Array<any>;
 }
 
 export default class PlaceCard extends React.Component<IProps> {
   render = () => {
     return (
       <>
-        {this.props.recentlyVisits.map((visitplace) => {
+        {this.props.keywords.map((keyword) => {
           return (
-            <List
-              component={Link}
-              to={`/user/visits/${visitplace.placeid}/${visitplace.visitid}`}
-            >
+            <List>
               <ListItem alignItems="flex-start">
                 <ListItemText
-                  primary={visitplace.placename}
                   secondary={
                     <React.Fragment>
                       <Typography
@@ -32,9 +27,8 @@ export default class PlaceCard extends React.Component<IProps> {
                         variant="body2"
                         color="textPrimary"
                       >
-                        위치: {visitplace.address}
+                        {keyword.keyword}
                       </Typography>
-                      {visitplace.visittime}
                     </React.Fragment>
                   }
                 />

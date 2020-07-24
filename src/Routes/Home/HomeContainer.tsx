@@ -9,6 +9,7 @@ interface IProps extends RouteComponentProps<any> {}
 interface IState {
   keyword: string;
   recentlyVisits: Array<any>;
+  searchHistory: any;
 }
 
 export default class HomeContainer extends React.Component<IProps, IState> {
@@ -20,8 +21,10 @@ export default class HomeContainer extends React.Component<IProps, IState> {
         placename: "",
         address: "",
         visittime: "",
+        visitid: -1,
       },
     ],
+    searchHistory: [""],
   };
 
   handleClickSearch = (e: React.MouseEvent) => {
@@ -40,7 +43,12 @@ export default class HomeContainer extends React.Component<IProps, IState> {
     if (CheckLogin() === false) {
       this.props.history.push("/");
     }
-    console.log(await API.User.UserSearchHistory());
+    const history = await API.User.UserSearchHistory();
+    this.setState({
+      ...this.state,
+      searchHistory: history.data,
+    });
+
     const data = await API.User.UserRecentlyVisit();
     const userdata = data.data as Array<any>;
     userdata.map((userData) => {
@@ -51,6 +59,7 @@ export default class HomeContainer extends React.Component<IProps, IState> {
           placename: userData.placename,
           address: userData.address,
           visittime: userData.visittime,
+          visitid: userData.visitid,
         }),
       });
       return this.state;
@@ -70,6 +79,7 @@ export default class HomeContainer extends React.Component<IProps, IState> {
         handleChangeValue={this.handleChangeValue}
         recentlyVisits={this.state.recentlyVisits}
         push={this.props.history.push}
+        searchHistory={this.state.searchHistory}
       />
     );
   };

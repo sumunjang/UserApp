@@ -5,12 +5,14 @@ import { Container, Headers, Articles, Navs } from "./HomeStyle";
 import MenuDrawer from "./Components/MenuDrawer";
 import PlaceCard from "./Components/PlaceCard";
 import SearchIcon from "@material-ui/icons/Search";
+import HistoryCard from "./Components/HIstoryCard";
 
 interface IProps {
   handleClickSearch(e: React.MouseEvent): void;
   handleChangeValue(e: React.ChangeEvent): void;
   recentlyVisits: Array<any>;
   push: Function;
+  searchHistory: any;
 }
 
 class HomePresenter extends React.Component<IProps> {
@@ -28,7 +30,6 @@ class HomePresenter extends React.Component<IProps> {
       SearchHistory,
     } = Articles;
     const { Nav, GotoQRcode } = Navs;
-
     return (
       <Container>
         <Header>
@@ -47,7 +48,7 @@ class HomePresenter extends React.Component<IProps> {
               </SearchIconContainer>
               <SearchList>
                 <SearchHistory>
-                  <div>검색 리스트</div>
+                  <HistoryCard keywords={this.props.searchHistory} />
                 </SearchHistory>
               </SearchList>
             </SearchBar>
