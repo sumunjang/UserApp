@@ -12,7 +12,7 @@ export default class QRPresenter extends React.Component {
         videoInputDevices.forEach((device) =>
           console.log(`${device.label}, ${device.deviceId}`)
         );
-        const firstDeviceId = videoInputDevices[0].deviceId;
+        const firstDeviceId = videoInputDevices[1].deviceId;
         codeReader
           .decodeOnceFromVideoDevice(firstDeviceId, "video")
           .then((result) => console.log(result.getText()));
