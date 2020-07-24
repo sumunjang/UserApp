@@ -48,6 +48,8 @@ const SearchBar = styled.div`
 `;
 const SearchIconContainer = styled.div`
   z-index: 3;
+  opacity: 0;
+  display: none;
   transition: all 0.5s ease-in-out;
 `;
 const SearchList = styled.div`
@@ -60,17 +62,21 @@ const SearchList = styled.div`
   z-index: 2;
 `;
 const SearchItem = styled.div``;
+const SearchForm = styled.form``;
 const SearchInput = styled.input`
-  border: none;
+  border: 1px solid black;
+  border-radius: 10px;
   padding: 10px;
   margin-right: 4px;
   z-index: 3;
   transition: all 0.5s ease-in-out;
   &:focus ~ ${SearchIconContainer} {
-    transform: translateY(-85px) translateY(-5px);
+    transform: translateY(-55px) translateY(-5px);
+    opacity: 1;
+    display: block;
   }
   &:focus {
-    transform: translateY(-85px);
+    transform: translateY(-60px);
     width: 80%;
   }
   &:focus ~ ${SearchList} {
@@ -100,6 +106,7 @@ export const Articles = {
   SearchIconContainer,
   SearchList,
   SearchItem,
+  SearchForm,
   SearchHistory,
 };
 

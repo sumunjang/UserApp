@@ -35,16 +35,24 @@ export default class UserPassPresenter extends React.Component<IProps> {
           <InformationContainer>
             <Title>유저 정보</Title>
             <UserInformationContainer>
-              <UserName>{userdata && userdata.username}</UserName>
+              <UserName>
+                {userdata
+                  ? `이름 : ${userdata.username}`
+                  : "시설에 출입하지 않았습니다."}
+              </UserName>
               <VisitTime>
-                방문시간 : {placedata && placedata.visittime}
+                {placedata ? `방문시간 : ${placedata.visittime}` : ""}
               </VisitTime>
               <CurrentTime>현재시간 : {Date().toLocaleString()}</CurrentTime>
             </UserInformationContainer>
             <Title>시설 정보</Title>
             <PlaceInformationContainer>
-              <PlaceName>{placedata && placedata.placename}</PlaceName>
-              <PlaceAddress>{placedata && placedata.address}</PlaceAddress>
+              <PlaceName>
+                {placedata
+                  ? placedata.placename
+                  : "시설에 출입하지 않았습니다."}
+              </PlaceName>
+              <PlaceAddress>{placedata ? placedata.address : ""}</PlaceAddress>
             </PlaceInformationContainer>
           </InformationContainer>
         </Article>

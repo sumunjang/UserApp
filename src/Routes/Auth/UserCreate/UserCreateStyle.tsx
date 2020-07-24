@@ -35,6 +35,15 @@ const Form = styled.form`
 const Photo = styled.input``;
 const Name = styled(TextField)``;
 const Id = styled(TextField)``;
+const IdContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const IdCheck = styled(Button)`
+  width: 20px;
+  height: 55px;
+`;
 const Password1 = styled(TextField)``;
 const Password2 = styled(TextField)``;
 const Submit = styled(Button)``;
@@ -47,4 +56,6 @@ export const Articles = {
   Password1,
   Password2,
   Submit,
+  IdContainer,
+  IdCheck,
 };

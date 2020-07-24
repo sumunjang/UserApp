@@ -43,6 +43,9 @@ const UserName = styled.div`
   margin-bottom: 20px;
 `;
 const VisitTime = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
 `;
 const CurrentTime = styled.div``;

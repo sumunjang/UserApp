@@ -10,6 +10,7 @@ import HistoryCard from "./Components/HIstoryCard";
 interface IProps {
   handleClickSearch(e: React.MouseEvent): void;
   handleChangeValue(e: React.ChangeEvent): void;
+  handleSubmitSearch(e: React.FormEvent): void;
   recentlyVisits: Array<any>;
   push: Function;
   searchHistory: any;
@@ -27,6 +28,7 @@ class HomePresenter extends React.Component<IProps> {
       SearchInput,
       SearchIconContainer,
       SearchList,
+      SearchForm,
       SearchHistory,
     } = Articles;
     const { Nav, GotoQRcode } = Navs;
@@ -41,17 +43,22 @@ class HomePresenter extends React.Component<IProps> {
         </Header>
         <Article>
           <SearchContainer>
-            <SearchBar>
-              <SearchInput onChange={this.props.handleChangeValue} />
-              <SearchIconContainer>
-                <SearchIcon onClick={this.props.handleClickSearch} />
-              </SearchIconContainer>
-              <SearchList>
-                <SearchHistory>
-                  <HistoryCard keywords={this.props.searchHistory} />
-                </SearchHistory>
-              </SearchList>
-            </SearchBar>
+            <SearchForm onSubmit={this.props.handleSubmitSearch}>
+              <SearchBar>
+                <SearchInput
+                  onChange={this.props.handleChangeValue}
+                  placeholder="시설 검색하기"
+                />
+                <SearchIconContainer>
+                  <SearchIcon onClick={this.props.handleClickSearch} />
+                </SearchIconContainer>
+                <SearchList>
+                  <SearchHistory>
+                    <HistoryCard keywords={this.props.searchHistory} />
+                  </SearchHistory>
+                </SearchList>
+              </SearchBar>
+            </SearchForm>
           </SearchContainer>
           <PlaceContainer>
             <Title>최근 작성했던 문진표</Title>

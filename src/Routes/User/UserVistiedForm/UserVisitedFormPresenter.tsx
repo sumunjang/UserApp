@@ -24,6 +24,8 @@ export default class UserVisitedFormPresenter extends React.Component<IProps> {
     } = Articles;
 
     const { requestForm } = this.props.visitInformation;
+    const { fixedForm } = this.props.visitInformation;
+    console.log(fixedForm);
 
     return (
       <Container>
@@ -46,16 +48,79 @@ export default class UserVisitedFormPresenter extends React.Component<IProps> {
               ))}
             <Title>고정 문진표</Title>
             <PlaceInformationContainer>
-              <PlaceName>질문</PlaceName>
-              <PlaceAddress>답변</PlaceAddress>
+              <PlaceName>최근 2주 이내 해외 방문 여부</PlaceName>
+              <div>네</div>
+              <input
+                type="checkbox"
+                checked={fixedForm && fixedForm.oversea && true}
+                disabled
+              />
+              <div>아니요</div>
+              <input
+                type="checkbox"
+                checked={fixedForm && !fixedForm.oversea && true}
+                disabled
+              />
             </PlaceInformationContainer>
             <PlaceInformationContainer>
-              <PlaceName>질문</PlaceName>
-              <PlaceAddress>답변</PlaceAddress>
+              <PlaceName>기침 여부</PlaceName>
+              <div>네</div>
+              <input
+                type="checkbox"
+                checked={fixedForm && fixedForm.cough && true}
+                disabled
+              />
+              <div>아니요</div>
+              <input
+                type="checkbox"
+                checked={fixedForm && !fixedForm.cough && true}
+                disabled
+              />
             </PlaceInformationContainer>
             <PlaceInformationContainer>
-              <PlaceName>질문</PlaceName>
-              <PlaceAddress>답변</PlaceAddress>
+              <PlaceName>인후통 여부</PlaceName>
+              <div>네</div>
+              <input
+                type="checkbox"
+                checked={fixedForm && fixedForm.sore && true}
+                disabled
+              />
+              <div>아니요</div>
+              <input
+                type="checkbox"
+                checked={fixedForm && !fixedForm.sore && true}
+                disabled
+              />
+            </PlaceInformationContainer>
+            <PlaceInformationContainer>
+              <PlaceName>호흡곤란 여부</PlaceName>
+              <div>네</div>
+              <input
+                type="checkbox"
+                checked={fixedForm && fixedForm.dyspnoea && true}
+                disabled
+              />
+              <div>아니요</div>
+              <input
+                type="checkbox"
+                checked={fixedForm && !fixedForm.dyspnoea && true}
+                disabled
+              />
+            </PlaceInformationContainer>
+            <PlaceInformationContainer>
+              <PlaceName>최근 2주 이내 확진 환자와 접촉하였습니까?</PlaceName>
+              <div>네</div>
+              <input
+                type="checkbox"
+                checked={fixedForm && fixedForm.touch && true}
+                disabled
+              />
+              <div>아니요</div>
+              <input
+                type="checkbox"
+                checked={fixedForm && !fixedForm.touch && true}
+                disabled
+              />
             </PlaceInformationContainer>
           </InformationContainer>
         </Article>

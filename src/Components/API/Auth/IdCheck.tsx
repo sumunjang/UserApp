@@ -2,18 +2,10 @@ import BaseApi from "../BaseApi";
 import Cookies from "../../Cookies";
 import { AxiosResponse } from "axios";
 
-interface ServerResponse {
-  places: [
-    {
-      placeid: number;
-      placeName: string;
-      Address: string;
-    }
-  ];
-}
+interface ServerResponse {}
 
-const SearchPlaces = (data: string) =>
-  BaseApi.get(`/places/search/${data}`, {
+const UserProfile = (key: string) =>
+  BaseApi.get(`/auth/idcheck/${key}`, {
     headers: {
       Authorization: "Bearer " + Cookies.LoginCookies.getLoginCookies().token,
     },
@@ -21,4 +13,4 @@ const SearchPlaces = (data: string) =>
     return response;
   });
 
-export default SearchPlaces;
+export default UserProfile;

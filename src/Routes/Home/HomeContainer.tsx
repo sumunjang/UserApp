@@ -31,6 +31,10 @@ export default class HomeContainer extends React.Component<IProps, IState> {
     this.props.history.push(`/search/${this.state.keyword}`);
   };
 
+  handleSubmitSearch = (e: React.FormEvent) => {
+    this.props.history.push(`/search/${this.state.keyword}`);
+  };
+
   handleChangeValue = (e: React.ChangeEvent) => {
     const value = (e.target as HTMLInputElement).value;
     this.setState({
@@ -80,6 +84,7 @@ export default class HomeContainer extends React.Component<IProps, IState> {
         recentlyVisits={this.state.recentlyVisits}
         push={this.props.history.push}
         searchHistory={this.state.searchHistory}
+        handleSubmitSearch={this.handleSubmitSearch}
       />
     );
   };

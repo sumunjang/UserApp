@@ -3,17 +3,15 @@ import Cookies from "../../Cookies";
 import { AxiosResponse } from "axios";
 
 interface ServerResponse {
-  places: [
-    {
-      placeid: number;
-      placeName: string;
-      Address: string;
-    }
-  ];
+  places: {
+    placeid: number;
+    placeName: string;
+    Address: string;
+  };
 }
 
-const SearchPlaces = (data: string) =>
-  BaseApi.get(`/places/search/${data}`, {
+const SearchPlaces = (id: number) =>
+  BaseApi.get(`/places/${id}`, {
     headers: {
       Authorization: "Bearer " + Cookies.LoginCookies.getLoginCookies().token,
     },

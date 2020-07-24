@@ -3,6 +3,7 @@ import Routes from "../../../Components/Routes";
 import MenuDrawer from "../../Home/Components/MenuDrawer";
 import { Container, Headers, Articles, Navs } from "./PlaceFormStyle";
 import Cards from "./Components/Cards";
+import FixedCards from "./Components/FixedCards";
 
 interface IState {
   answers: Array<string>;
@@ -13,17 +14,14 @@ interface IProps {
   handleSubmit(e: React.FormEvent): void;
   handleChangeAnswer(e: React.ChangeEvent, questionid: number): void;
   push: Function;
+  hanldefixedChangeanswer: Function;
+  state: any;
 }
 
 export default class PlaceFormPresenter extends React.Component<
   IProps,
   IState
 > {
-  staticQuestions = [
-    "최근 2주 이내 해외 방문여부",
-    "기침, 인후통, 호흡곤란 등 의심 증상",
-    "최근 2주 이내 확진환자와 접촉한 경우",
-  ];
   render = () => {
     const { Header, MenuBar, Logo, Cancel } = Headers;
     const { Article, InformationContainer, Title } = Articles;
@@ -48,6 +46,10 @@ export default class PlaceFormPresenter extends React.Component<
           </InformationContainer>
           <InformationContainer>
             <Title>문진표</Title>
+            <FixedCards
+              onChangeAnswer={this.props.hanldefixedChangeanswer}
+              state={this.props.state}
+            />
           </InformationContainer>
         </Article>
         <Nav>

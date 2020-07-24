@@ -26,7 +26,5 @@ export default async function post<ServerResponse>(
     headers: {
       Authorization: "Bearer " + Cookies.LoginCookies.getLoginCookies().token,
     },
-  }).then(function (response) {
-    console.log(placeid);
-  });
+  }).then(function (response) {});
 }

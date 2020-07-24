@@ -5,6 +5,7 @@ import { RouteComponentProps } from "react-router-dom";
 import { connect } from "react-redux";
 import { ReduxActions } from "../../../Components/Redux/Store";
 import { CreateUserMessages } from "../../../Components/Messages";
+import API from "../../../Components/API";
 
 interface IState {
   inputName: string;
@@ -13,6 +14,7 @@ interface IState {
   inputPassword2: string;
   errorState: string;
   errorMessage: string;
+  checkLogin: boolean;
 }
 
 interface IProps extends RouteComponentProps<any> {
@@ -29,6 +31,7 @@ class UserPassContainer extends React.Component<IProps> {
     inputPassword: "",
     inputPassword2: "",
     error: false,
+    checkLogin: false,
   };
 
   changeInputName = (e: React.ChangeEvent) => {
@@ -52,6 +55,27 @@ class UserPassContainer extends React.Component<IProps> {
     });
   };
 
+  onCheckId = async (e: React.MouseEvent) => {
+    try {
+      const data = await API.Auth.IdCheck(this.state.inputId);
+      if (data.data === "OK") {
+        this.setState({
+          ...this.state,
+          checkLogin: true,
+        });
+        this.setState({
+          errorState: "success",
+          errorMessage: "사용 가능한 아이디입니다.",
+        });
+      }
+    } catch (e) {
+      this.setState({
+        errorState: "error",
+        errorMessage: "아이디가 중복되었습니다.",
+      });
+    }
+  };
+
   onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (
@@ -63,6 +87,13 @@ class UserPassContainer extends React.Component<IProps> {
       this.setState({
         errorState: "error",
         errorMessage: "정보를 다 채워주세요.",
+      });
+      return;
+    }
+    if (this.state.checkLogin === false) {
+      this.setState({
+        errorState: "error",
+        errorMessage: "아이디 중복확인을 해주세요.",
       });
       return;
     }
@@ -98,6 +129,7 @@ class UserPassContainer extends React.Component<IProps> {
         changeInputPassword={this.changeInputPassword}
         changeInputPassword2={this.changeInputPassword2}
         state={this.state}
+        onCheckId={this.onCheckId}
       />
     );
   };
