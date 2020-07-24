@@ -21,10 +21,14 @@ class QRPresenter extends React.Component<IProps, IState> {
     codeReader
       .listVideoInputDevices()
       .then((videoInputDevices) => {
-        videoInputDevices.forEach((device) =>
-          console.log(`${device.label}, ${device.deviceId}`)
-        );
-        const firstDeviceId = videoInputDevices[1].deviceId;
+        let maxCameraId = -1;
+        videoInputDevices.forEach((device) => {
+          console.log(`${device.label}, ${device.deviceId}`);
+          if (parseInt(device.deviceId) > maxCameraId) {
+            maxCameraId = parseInt(device.deviceId);
+          }
+        });
+        const firstDeviceId = videoInputDevices[maxCameraId].deviceId;
         codeReader
           .decodeOnceFromVideoDevice(firstDeviceId, "video")
           .then(async (result) => {
