@@ -4,9 +4,16 @@ import MenuDrawer from "../../Home/Components/MenuDrawer";
 import { Container, Headers, Articles, Navs } from "./PlaceFormStyle";
 import Cards from "./Components/Cards";
 import FixedCards from "./Components/FixedCards";
+import { Collapse } from "@material-ui/core";
+import { ListItem, ListItemIcon, List } from "@material-ui/core";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import ListItemText from "@material-ui/core/ListItemText";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
 
 interface IState {
   answers: Array<string>;
+  open: boolean;
 }
 
 interface IProps {
@@ -22,9 +29,32 @@ export default class PlaceFormPresenter extends React.Component<
   IProps,
   IState
 > {
+  state = {
+    answers: new Array<string>(),
+    open: false,
+  };
+
+  handleClick = () => {
+    this.setState({ ...this.state, open: !this.state.open });
+  };
+
+  componentDidMount = () => {
+    if (this.props.state.firstOpen) {
+      this.setState({ ...this.state, open: true });
+    }
+    console.log(this.props.state.firstOpen);
+  };
+
   render = () => {
     const { Header, MenuBar, Logo, Cancel } = Headers;
-    const { Article, InformationContainer, Title } = Articles;
+    const {
+      Article,
+      InformationContainer,
+      Title,
+      BtnContainer,
+      BtnFold,
+      BtnSpared,
+    } = Articles;
     const { Nav, SubmitForm } = Navs;
 
     return (
@@ -40,6 +70,7 @@ export default class PlaceFormPresenter extends React.Component<
           <InformationContainer>
             <Title>시설 요구 정보</Title>
             <Cards
+              state={this.props.state}
               questions={this.props.questions}
               onChangeAnswer={this.props.handleChangeAnswer}
             />

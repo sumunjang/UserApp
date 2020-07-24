@@ -22,6 +22,7 @@ export default class UserVistiedListContainer extends React.Component<
   };
 
   render = () => {
+    console.log(this.state.data);
     return (
       <UserVisitedPresenter
         push={this.props.history.push}
