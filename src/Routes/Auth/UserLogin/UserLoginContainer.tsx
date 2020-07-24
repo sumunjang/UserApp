@@ -63,7 +63,7 @@ class UserLoginContainer extends React.Component<IProps, IState> {
   };
 
   componentDidMount() {
-    if (CheckLogin()) {
+    if (!CheckLogin()) {
       this.props.history.push(Routes.Home);
     }
     if (this.props.reduxState.message) {
