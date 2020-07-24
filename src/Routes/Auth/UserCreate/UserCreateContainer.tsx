@@ -54,6 +54,18 @@ class UserPassContainer extends React.Component<IProps> {
 
   onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (
+      this.state.inputId === "" ||
+      this.state.inputName === "" ||
+      this.state.inputPassword === "" ||
+      this.state.inputPassword2 === ""
+    ) {
+      this.setState({
+        errorState: "error",
+        errorMessage: "정보를 다 채워주세요.",
+      });
+      return;
+    }
     try {
       if (this.state.inputPassword === this.state.inputPassword2) {
         await Api.Auth.UserCreateApi({
