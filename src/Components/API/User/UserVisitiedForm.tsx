@@ -4,12 +4,12 @@ import { AxiosResponse } from "axios";
 
 interface ServerResponse {}
 
-const UserSearchHistory = () => {
+const UserVisitiedForm = (placeid: number, visitid: number) => {
   let token = "";
   if (Cookies.LoginCookies.getLoginCookies()) {
     token = Cookies.LoginCookies.getLoginCookies().token;
   }
-  return BaseApi.get(`/places/history`, {
+  return BaseApi.get(`/forms/${placeid}/${visitid}`, {
     headers: {
       Authorization: "Bearer " + token,
     },
@@ -18,4 +18,4 @@ const UserSearchHistory = () => {
   });
 };
 
-export default UserSearchHistory;
+export default UserVisitiedForm;

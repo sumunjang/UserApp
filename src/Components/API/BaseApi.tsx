@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "http://34.105.29.115:3000/",
+  baseURL: "https://sumunjangapi.codingnome.dev/",
   timeout: 3000,
 });

@@ -6,7 +6,6 @@ const CheckLogin = (): boolean => {
   if (loginData === "undefined") {
     return false;
   } else {
-    console.log(true);
     return true;
   }
 };
