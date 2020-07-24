@@ -19,6 +19,7 @@ export default class UserDeleteContainer extends React.Component<IProps> {
       <UserDeletePresenter
         handleCancelBtn={this.handleCancelBtn}
         handleDeleteBtn={this.handleDeleteBtn}
+        push={this.props.history.push}
       />
     );
   };

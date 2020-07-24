@@ -7,6 +7,7 @@ import { Button } from "@material-ui/core";
 interface IProps {
   handleCancelBtn(e: React.MouseEvent): void;
   handleDeleteBtn(e: React.MouseEvent): void;
+  push: Function;
 }
 
 export default class UserDeletePresenter extends React.Component<IProps> {
@@ -26,7 +27,7 @@ export default class UserDeletePresenter extends React.Component<IProps> {
       <Container>
         <Header>
           <MenuBar>
-            <MenuDrawer />
+            <MenuDrawer push={this.props.push} />
           </MenuBar>
           <Logo>수문장</Logo>
           <Cancel to={Routes.Home}>홈으로</Cancel>

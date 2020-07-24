@@ -9,6 +9,7 @@ interface IProps {
   changeInputPassword(e: React.ChangeEvent): void;
   changeInputPassword2(e: React.ChangeEvent): void;
   state: any;
+  push: Function;
 }
 
 export default class UserEditProfilePresenter extends React.Component<IProps> {
@@ -20,7 +21,7 @@ export default class UserEditProfilePresenter extends React.Component<IProps> {
       <Container>
         <Header>
           <MenuBar>
-            <MenuDrawer />
+            <MenuDrawer push={this.props.push} />
           </MenuBar>
           <Logo>수문장</Logo>
           <Cancel to={Routes.Home}>홈으로</Cancel>

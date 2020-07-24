@@ -4,7 +4,11 @@ import { Conatiner, Headers, Articles } from "./UserVistiedListStyle";
 import MenuDrawer from "../../Home/Components/MenuDrawer";
 import Card from "./Components/Card";
 
-export default class UserVistiedListPresenter extends React.Component {
+interface IProps {
+  push: Function;
+}
+
+export default class UserVistiedListPresenter extends React.Component<IProps> {
   render = () => {
     const { Header, Logo, MenuBar, Cancel } = Headers;
     const { Article, Title, TitleContainer } = Articles;
@@ -13,7 +17,7 @@ export default class UserVistiedListPresenter extends React.Component {
       <Conatiner>
         <Header>
           <MenuBar>
-            <MenuDrawer />
+            <MenuDrawer push={this.props.push} />
           </MenuBar>
           <Logo>수문장</Logo>
           <Cancel to={Routes.Home}>홈으로</Cancel>

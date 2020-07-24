@@ -2,6 +2,7 @@ import { createStore } from "redux";
 
 const SetUserData = "userUserData" as const;
 const SetMessage = "setMessage" as const;
+const SetSubmitFormData = "setSubmitFormData" as const;
 
 interface SetUserDataAction {
   type: typeof SetUserData;
@@ -17,6 +18,13 @@ interface SetMessageAction {
   };
 }
 
+interface SetSubmitFormDataAction {
+  type: typeof SetSubmitFormData;
+  payload: {
+    submitFormData: object;
+  };
+}
+
 const setUserData = (userName: string) => {
   return { type: SetUserData, payload: { userName } };
 };
@@ -25,11 +33,16 @@ const setMessage = (message: string) => {
   return { type: SetMessage, payload: { message } };
 };
 
-type Action = SetUserDataAction | SetMessageAction;
+const setSubmitFormData = (submitFormData: object) => {
+  return { type: SetSubmitFormData, payload: { submitFormData } };
+};
+
+type Action = SetUserDataAction | SetMessageAction | SetSubmitFormDataAction;
 
 export const ReduxActions = {
   setUserData,
   setMessage,
+  setSubmitFormData,
 };
 
 const reducer = (state = {}, action: Action) => {
@@ -38,6 +51,8 @@ const reducer = (state = {}, action: Action) => {
       return { ...state, username: action.payload.userName };
     case SetMessage:
       return { ...state, message: action.payload.message };
+    case SetSubmitFormData:
+      return { ...state, submitFormData: action.payload.submitFormData };
     default:
       return state;
   }

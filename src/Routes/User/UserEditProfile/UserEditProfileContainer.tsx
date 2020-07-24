@@ -57,6 +57,7 @@ class UserEditProfileContainer extends React.Component<IProps, IState> {
         changeInputPassword={this.changeInputPassword}
         changeInputPassword2={this.changeInputPassword2}
         state={this.state}
+        push={this.props.history.push}
       />
     );
   };

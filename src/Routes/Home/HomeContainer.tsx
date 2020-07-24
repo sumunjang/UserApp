@@ -40,6 +40,7 @@ export default class HomeContainer extends React.Component<IProps, IState> {
     if (CheckLogin() === false) {
       this.props.history.push("/");
     }
+    console.log(await API.User.UserSearchHistory());
     const data = await API.User.UserRecentlyVisit();
     const userdata = data.data as Array<any>;
     userdata.map((userData) => {
@@ -68,6 +69,7 @@ export default class HomeContainer extends React.Component<IProps, IState> {
         handleClickSearch={this.handleClickSearch}
         handleChangeValue={this.handleChangeValue}
         recentlyVisits={this.state.recentlyVisits}
+        push={this.props.history.push}
       />
     );
   };

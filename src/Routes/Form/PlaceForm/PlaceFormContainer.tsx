@@ -2,16 +2,19 @@ import React from "react";
 import PlaceFormPresenter from "./PlaceFormPresenter";
 import { RouteComponentProps } from "react-router-dom";
 import GetForm from "../../../Components/API/Forms/GetForm";
-import PostForm from "../../../Components/API/Forms/PostForm";
+import { connect } from "react-redux";
+import { ReduxActions } from "../../../Components/Redux/Store";
 
-interface IProps extends RouteComponentProps {}
+interface IProps extends RouteComponentProps {
+  setSubmitFormData: Function;
+}
 
 interface IState {
   questions: Array<{ questionid: number; question: string }>;
   answers: Array<{ questionid: number; answer: string }>;
 }
 
-export default class PlaceFormContainer extends React.Component<IProps> {
+class PlaceFormContainer extends React.Component<IProps> {
   state = {
     questions: [
       {
@@ -28,12 +31,18 @@ export default class PlaceFormContainer extends React.Component<IProps> {
   };
 
   handleSubmit = async (e: React.FormEvent) => {
+    // const data = this.state.answers as [{ questionid: number; answer: string }];
+    // await PostForm(
+    //   { requestForm: data },
+    //   (this.props.match.params as any).placeid
+    // );
+    // this.props.history.goBack();
     const data = this.state.answers as [{ questionid: number; answer: string }];
-    await PostForm(
-      { requestForm: data },
-      (this.props.match.params as any).placeid
-    );
-    this.props.history.goBack();
+    this.props.setSubmitFormData({
+      requestForm: data,
+      placeid: (this.props.match.params as any).placeid,
+    });
+    this.props.history.push("/qrcode/submit");
   };
 
   handleChangeAnswer = (e: React.ChangeEvent, questionid: number) => {
@@ -76,7 +85,22 @@ export default class PlaceFormContainer extends React.Component<IProps> {
         questions={this.state.questions}
         handleSubmit={this.handleSubmit}
         handleChangeAnswer={this.handleChangeAnswer}
+        push={this.props.history.push}
       />
     );
   };
 }
+
+function mapStateToProps(state: any) {
+  return { reduxState: state };
+}
+
+function mapDispatchToProps(dispatch: any, ownProps: any) {
+  return {
+    setSubmitFormData: (submitFormData: object) => {
+      return dispatch(ReduxActions.setSubmitFormData(submitFormData));
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlaceFormContainer);

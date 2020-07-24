@@ -2,7 +2,6 @@ import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { connect } from "react-redux";
 import API from "../../../Components/API";
-import Routes from "../../../Components/Routes";
 import LoginCookies from "../../../Components/Cookies/LoginCookies";
 import { ReduxActions } from "../../../Components/Redux/Store";
 import { CreateUserMessages } from "../../../Components/Messages";
@@ -63,8 +62,8 @@ class UserLoginContainer extends React.Component<IProps, IState> {
   };
 
   componentDidMount() {
-    if (!CheckLogin()) {
-      this.props.history.push(Routes.Home);
+    if (CheckLogin() === true) {
+      this.props.history.push("/home");
     }
     if (this.props.reduxState.message) {
       if (
