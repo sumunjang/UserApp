@@ -42,7 +42,7 @@
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build"
   },
-  "homepage": "https://zen-jennings-21000a.netlify.app/",
+  "homepage": "https://zealous-golick-a8da15.netlify.app/",
   "eslintConfig": {
     "extends": "react-app"
   },
