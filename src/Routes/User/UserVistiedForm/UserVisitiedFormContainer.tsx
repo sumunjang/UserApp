@@ -1,8 +1,11 @@
 import React from "react";
 import UserVisitedFormPresenter from "./UserVisitedFormPresenter";
+import { RouteComponentProps } from "react-router-dom";
 
-export default class UserVistiedFormContainer extends React.Component {
+interface IProps extends RouteComponentProps {}
+
+export default class UserVistiedFormContainer extends React.Component<IProps> {
   render = () => {
-    return <UserVisitedFormPresenter />;
+    return <UserVisitedFormPresenter push={this.props.history.push} />;
   };
 }

@@ -12,6 +12,7 @@ interface UserData {
 
 interface IProps {
   userData: UserData;
+  push: Function;
 }
 
 class UserProfilePresenter extends React.Component<IProps> {
@@ -32,7 +33,7 @@ class UserProfilePresenter extends React.Component<IProps> {
       <Container>
         <Header>
           <MenuBar>
-            <MenuDrawer />
+            <MenuDrawer push={this.props.push} />
           </MenuBar>
           <Logo>수문장</Logo>
           <Cancel to={Routes.Home}>홈으로</Cancel>

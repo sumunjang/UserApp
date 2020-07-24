@@ -1,6 +1,7 @@
 import React from "react";
 import UserProfilePresenter from "./UserProfilePresenter";
 import API from "../../../Components/API";
+import { RouteComponentProps } from "react-router-dom";
 
 interface UserData {
   userid: string;
@@ -11,7 +12,12 @@ interface IState {
   userData: UserData;
 }
 
-export default class UserProfileContainer extends React.Component<{}, IState> {
+interface IProps extends RouteComponentProps {}
+
+export default class UserProfileContainer extends React.Component<
+  IProps,
+  IState
+> {
   state = {
     userData: {
       userid: "",
@@ -23,6 +29,11 @@ export default class UserProfileContainer extends React.Component<{}, IState> {
     this.setState({ ...this.state, userData });
   };
   render = () => {
-    return <UserProfilePresenter userData={this.state.userData} />;
+    return (
+      <UserProfilePresenter
+        userData={this.state.userData}
+        push={this.props.history.push}
+      />
+    );
   };
 }

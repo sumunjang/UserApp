@@ -12,12 +12,18 @@ interface IProps {
   questions: Array<{ questionid: number; question: string }>;
   handleSubmit(e: React.FormEvent): void;
   handleChangeAnswer(e: React.ChangeEvent, questionid: number): void;
+  push: Function;
 }
 
 export default class PlaceFormPresenter extends React.Component<
   IProps,
   IState
 > {
+  staticQuestions = [
+    "최근 2주 이내 해외 방문여부",
+    "기침, 인후통, 호흡곤란 등 의심 증상",
+    "최근 2주 이내 확진환자와 접촉한 경우",
+  ];
   render = () => {
     const { Header, MenuBar, Logo, Cancel } = Headers;
     const { Article, InformationContainer, Title } = Articles;
@@ -27,7 +33,7 @@ export default class PlaceFormPresenter extends React.Component<
       <Container>
         <Header>
           <MenuBar>
-            <MenuDrawer />
+            <MenuDrawer push={this.props.push} />
           </MenuBar>
           <Logo>검색결과</Logo>
           <Cancel to={Routes.Home}>홈으로</Cancel>
@@ -39,6 +45,9 @@ export default class PlaceFormPresenter extends React.Component<
               questions={this.props.questions}
               onChangeAnswer={this.props.handleChangeAnswer}
             />
+          </InformationContainer>
+          <InformationContainer>
+            <Title>문진표</Title>
           </InformationContainer>
         </Article>
         <Nav>

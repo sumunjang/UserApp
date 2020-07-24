@@ -10,6 +10,7 @@ interface IProps {
   handleClickSearch(e: React.MouseEvent): void;
   handleChangeValue(e: React.ChangeEvent): void;
   recentlyVisits: Array<any>;
+  push: Function;
 }
 
 class HomePresenter extends React.Component<IProps> {
@@ -32,7 +33,7 @@ class HomePresenter extends React.Component<IProps> {
       <Container>
         <Header>
           <MenuBar>
-            <MenuDrawer />
+            <MenuDrawer push={this.props.push} />
           </MenuBar>
           <Logo>수문장</Logo>
           <Pass to={Routes.UserPass.replace(":userid", "123")}>출입증</Pass>

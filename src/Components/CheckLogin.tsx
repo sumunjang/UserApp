@@ -1,10 +1,12 @@
 import LoginCookies from "./Cookies/LoginCookies";
 
 const CheckLogin = (): boolean => {
-  const loginData = LoginCookies.getLoginCookies();
-  if (loginData === undefined) {
+  let loginData2 = LoginCookies.getLoginCookies();
+  let loginData = String(loginData2);
+  if (loginData === "undefined") {
     return false;
   } else {
+    console.log(true);
     return true;
   }
 };

@@ -37,7 +37,7 @@ export default class SearchResultPresenter extends React.Component<
       <Container>
         <Header>
           <MenuBar>
-            <MenuDrawer />
+            <MenuDrawer push={this.props.push} />
           </MenuBar>
           <Logo>검색결과</Logo>
           <Cancel to={Routes.Home}>홈으로</Cancel>

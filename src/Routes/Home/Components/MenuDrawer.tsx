@@ -15,7 +15,11 @@ interface IState {
   isOpen: boolean;
 }
 
-export default class MenuBar extends React.Component<{}, IState> {
+interface IProps {
+  push: any;
+}
+
+export default class MenuDrawer extends React.Component<IProps, IState> {
   state = {
     isOpen: false,
   };
@@ -36,7 +40,7 @@ export default class MenuBar extends React.Component<{}, IState> {
 
   handleClickLogout = (e: React.MouseEvent) => {
     LoginCookies.setLoginCookies(undefined);
-    window.location.href = "/";
+    this.props.push("/");
   };
 
   list = () => (

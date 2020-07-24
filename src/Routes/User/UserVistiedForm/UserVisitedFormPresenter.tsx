@@ -3,7 +3,11 @@ import Routes from "../../../Components/Routes";
 import { Container, Headers, Articles } from "./UsreVistiedFormStyle";
 import MenuDrawer from "../../Home/Components/MenuDrawer";
 
-export default class UserVisitedFormPresenter extends React.Component {
+interface IProps {
+  push: Function;
+}
+
+export default class UserVisitedFormPresenter extends React.Component<IProps> {
   render = () => {
     const { Header, MenuBar, Logo, Cancel } = Headers;
     const {
@@ -22,7 +26,7 @@ export default class UserVisitedFormPresenter extends React.Component {
       <Container>
         <Header>
           <MenuBar>
-            <MenuDrawer />
+            <MenuDrawer push={this.props.push} />
           </MenuBar>
           <Logo>작성했던 문진표</Logo>
           <Cancel to={Routes.Home}>홈으로</Cancel>
