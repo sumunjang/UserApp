@@ -1,6 +1,6 @@
 # UserApp
 
-- 수문장 유저 앱
+- 수문장 유저 앱(V0.1.0)
 
 ## How To Contribute
 
