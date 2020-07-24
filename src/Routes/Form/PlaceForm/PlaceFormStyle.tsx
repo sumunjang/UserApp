@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 export const Container = styled.div``;
 
@@ -43,6 +44,9 @@ const InformationContainer = styled.div`
   flex-direction: column;
   width: 100%;
 `;
+const BtnContainer = styled.div``;
+const BtnFold = styled(Button)``;
+const BtnSpared = styled(Button)``;
 const PlaceName = styled.div`
   margin-bottom: 20px;
 `;
@@ -94,6 +98,9 @@ export const Articles = {
   PlaceInformationContainer,
   PlaceAddress,
   Title,
+  BtnContainer,
+  BtnFold,
+  BtnSpared,
 };
 
 const Nav = styled.nav`

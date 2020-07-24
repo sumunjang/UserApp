@@ -17,6 +17,7 @@ interface IState {
   fixedfour: string;
   fixedfive: string;
   answers: Array<{ questionid: number; answer: string }>;
+  firstOpen: boolean;
 }
 
 class PlaceFormContainer extends React.Component<IProps> {
@@ -38,6 +39,7 @@ class PlaceFormContainer extends React.Component<IProps> {
     fixedthree: "",
     fixedfour: "",
     fixedfive: "",
+    firstOpen: false,
   };
 
   handleSubmit = async (e: React.FormEvent) => {
@@ -120,7 +122,23 @@ class PlaceFormContainer extends React.Component<IProps> {
   componentDidMount = async () => {
     const response = await GetForm((this.props.match.params as any).placeid);
     const data = (response.data as { requestForm: [] }).requestForm;
-    this.setState({ ...this.state, questions: data });
+    console.log("data : ", data);
+    this.setState({
+      ...this.state,
+      questions: data,
+      answers: data.map((dataset: any) => {
+        return {
+          questionid: dataset.questionid,
+          answer: dataset.answer ? dataset.answer : "",
+        };
+      }),
+    });
+
+    if (this.state.answers[0].answer !== "") {
+      this.setState({ ...this.state, firstOpen: true });
+    }
+    console.log(this.state);
+
     this.setState({
       ...this.state,
       questions: this.state.questions.filter((question) => {
