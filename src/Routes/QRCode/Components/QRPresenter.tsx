@@ -21,7 +21,6 @@ class QRPresenter extends React.Component<IProps, IState> {
     codeReader
       .listVideoInputDevices()
       .then((videoInputDevices) => {
-        let maxCameraId = -1;
         videoInputDevices.forEach((device) => {
           console.log(`${device.label}, ${device.deviceId}`);
         });
