@@ -4,13 +4,18 @@ import { AxiosResponse } from "axios";
 
 interface ServerResponse {}
 
-const UserRecentlyVisit = () =>
-  BaseApi.get(`/visits?items=5`, {
+const UserRecentlyVisit = () => {
+  let token = "";
+  if (Cookies.LoginCookies.getLoginCookies()) {
+    token = Cookies.LoginCookies.getLoginCookies().token;
+  }
+  return BaseApi.get(`/visits?items=5`, {
     headers: {
-      Authorization: "Bearer " + Cookies.LoginCookies.getLoginCookies().token,
+      Authorization: "Bearer " + token,
     },
   }).then((response: AxiosResponse<ServerResponse>) => {
     return response;
   });
+};
 
 export default UserRecentlyVisit;

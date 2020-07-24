@@ -37,6 +37,9 @@ export default class HomeContainer extends React.Component<IProps, IState> {
   };
 
   componentDidMount = async () => {
+    if (CheckLogin() === false) {
+      this.props.history.push("/");
+    }
     const data = await API.User.UserRecentlyVisit();
     const userdata = data.data as Array<any>;
     userdata.map((userData) => {
@@ -60,9 +63,6 @@ export default class HomeContainer extends React.Component<IProps, IState> {
   };
 
   render = () => {
-    if (CheckLogin() === false) {
-      this.props.history.push("/");
-    }
     return (
       <HomePresenter
         handleClickSearch={this.handleClickSearch}
