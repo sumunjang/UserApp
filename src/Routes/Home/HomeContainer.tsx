@@ -49,6 +49,7 @@ export default class HomeContainer extends React.Component<IProps, IState> {
           visittime: userData.visittime,
         }),
       });
+      return this.state;
     });
     this.setState({
       ...this.state,

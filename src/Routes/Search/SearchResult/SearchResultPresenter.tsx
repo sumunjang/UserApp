@@ -32,7 +32,6 @@ export default class SearchResultPresenter extends React.Component<
   render = () => {
     const { Header, MenuBar, Logo, Cancel } = Headers;
     const { Article, SearchKeywordContainer, Keyword } = Articles;
-    let key = 0;
 
     return (
       <Container>

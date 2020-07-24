@@ -56,7 +56,7 @@ class HomePresenter extends React.Component<IProps> {
             <PlaceCard recentlyVisits={this.props.recentlyVisits} />
           </PlaceContainer>
         </Article>
-        <Nav>
+        <Nav to="/qrcode">
           <GotoQRcode>QR코드로 문진표 작성하기</GotoQRcode>
         </Nav>
       </Container>

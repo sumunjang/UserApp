@@ -103,7 +103,7 @@ export const Articles = {
   SearchHistory,
 };
 
-const Nav = styled.div`
+const Nav = styled(Link)`
   position: fixed;
   bottom: 0px;
   padding: 30px 20px;

@@ -12,7 +12,20 @@ interface IState {
 }
 
 export default class PlaceFormContainer extends React.Component<IProps> {
-  state = { questions: [], answers: new Array() };
+  state = {
+    questions: [
+      {
+        questionid: -1,
+        question: "",
+      },
+    ],
+    answers: [
+      {
+        questionid: -1,
+        answer: "",
+      },
+    ],
+  };
 
   handleSubmit = async (e: React.FormEvent) => {
     const data = this.state.answers as [{ questionid: number; answer: string }];
@@ -26,23 +39,36 @@ export default class PlaceFormContainer extends React.Component<IProps> {
   handleChangeAnswer = (e: React.ChangeEvent, questionid: number) => {
     let isNomal = false;
     this.state.answers.map((answer: any) => {
-      if (answer.questionid == questionid) {
+      if (answer.questionid === questionid) {
         answer.answer = (e.target as HTMLInputElement).value;
         isNomal = true;
       }
+      return answer.asnwer;
     });
-    if (isNomal == false) {
+    if (isNomal === false) {
       this.state.answers.push({
         questionid: questionid,
         answer: (e.target as HTMLInputElement).value,
       });
     }
+    this.setState({
+      ...this.state,
+      questions: this.state.questions.filter((question) => {
+        return question.questionid !== -1;
+      }),
+    });
   };
 
   componentDidMount = async () => {
     const response = await GetForm((this.props.match.params as any).placeid);
     const data = (response.data as { requestForm: [] }).requestForm;
     this.setState({ ...this.state, questions: data });
+    this.setState({
+      ...this.state,
+      questions: this.state.questions.filter((question) => {
+        return question.questionid !== -1;
+      }),
+    });
   };
   render = () => {
     return (

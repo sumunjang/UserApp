@@ -5,6 +5,7 @@ import Search from "../Routes/Search";
 import Form from "../Routes/Form";
 import User from "../Routes/User";
 import Auth from "../Routes/Auth";
+import QRCode from "../Routes/QRCode";
 import UserLogin from "../Routes/Auth/UserLogin";
 
 const Router: React.FunctionComponent = () => (
@@ -16,6 +17,7 @@ const Router: React.FunctionComponent = () => (
       <Route path="/form" component={Form} />
       <Route path="/user" component={User} />
       <Route path="/auth" component={Auth} />
+      <Route path="/qrcode" component={QRCode} />
       <Redirect from="*" to="/" />
     </Switch>
   </BrowserRouter>
