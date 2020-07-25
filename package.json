@@ -34,7 +34,8 @@
     "styled-components": "^5.1.1",
     "styled-reset": "^4.2.1",
     "typescript": "^3.7.5",
-    "universal-cookie": "^4.0.3"
+    "universal-cookie": "^4.0.3",
+    "zxing-typescript": "^0.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

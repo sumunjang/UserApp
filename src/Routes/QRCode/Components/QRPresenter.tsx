@@ -16,37 +16,43 @@ interface IProps {
   reduxState: any;
 }
 class QRPresenter extends React.Component<IProps, IState> {
+  state = {
+    videoInputDevices: "",
+    codeReader: new BrowserQRCodeReader(),
+  };
   componentDidMount = async () => {
-    const codeReader = new BrowserQRCodeReader();
-    this.setState({ ...this.state, codeReader });
-    codeReader
-      .listVideoInputDevices()
-      .then((videoInputDevices) => {
-        videoInputDevices.forEach((device) => {
-          console.log(`${device.label}, ${device.deviceId}`);
-        });
-        const firstDeviceId =
-          videoInputDevices[videoInputDevices.length - 1].deviceId;
-        codeReader
-          .decodeOnceFromVideoDevice(firstDeviceId, "video")
-          .then(async (result) => {
-            if (this.props.isSubmit) {
-              const resulttext = result.getText().toString();
-              const resulttextlist = resulttext.split("/");
-              console.log(resulttextlist[2]);
-              console.log(this.props.reduxState);
-              await API.Forms.PostForm(
-                this.props.reduxState.submitFormData,
-                resulttextlist[2]
-              );
-              this.props.push("/home");
-            } else {
-              const resulttext = result.getText().toString();
-              this.props.push(resulttext);
-            }
+    try {
+      this.state.codeReader
+        .listVideoInputDevices()
+        .then((videoInputDevices) => {
+          videoInputDevices.forEach((device) => {
+            console.log(`${device.label}, ${device.deviceId}`);
           });
-      })
-      .catch((err) => this.props.push("/home"));
+          const firstDeviceId =
+            videoInputDevices[videoInputDevices.length - 1].deviceId;
+          this.state.codeReader
+            .decodeOnceFromVideoDevice(firstDeviceId, "video")
+            .then(async (result) => {
+              if (this.props.isSubmit) {
+                const resulttext = result.getText().toString();
+                const resulttextlist = resulttext.split("/");
+                console.log(resulttextlist[2]);
+                console.log(this.props.reduxState);
+                await API.Forms.PostForm(
+                  this.props.reduxState.submitFormData,
+                  resulttextlist[2]
+                );
+                this.props.push("/home");
+              } else {
+                const resulttext = result.getText().toString();
+                this.props.push(resulttext);
+              }
+            });
+        })
+        .catch((err) => this.props.push("/home"));
+    } catch (e) {
+      this.props.push("/home");
+    }
   };
 
   render = () => {
