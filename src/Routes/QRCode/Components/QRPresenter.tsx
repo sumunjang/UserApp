@@ -7,6 +7,7 @@ import API from "../../../Components/API";
 
 interface IState {
   videoInputDevices: any;
+  codeReader: any;
 }
 
 interface IProps {
@@ -17,7 +18,7 @@ interface IProps {
 class QRPresenter extends React.Component<IProps, IState> {
   componentDidMount = async () => {
     const codeReader = new BrowserQRCodeReader();
-
+    this.setState({ ...this.state, codeReader });
     codeReader
       .listVideoInputDevices()
       .then((videoInputDevices) => {
@@ -45,7 +46,7 @@ class QRPresenter extends React.Component<IProps, IState> {
             }
           });
       })
-      .catch((err) => console.error(err));
+      .catch((err) => this.props.push("/home"));
   };
 
   render = () => {

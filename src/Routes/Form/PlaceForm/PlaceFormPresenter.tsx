@@ -32,13 +32,6 @@ export default class PlaceFormPresenter extends React.Component<
     this.setState({ ...this.state, open: !this.state.open });
   };
 
-  componentDidMount = () => {
-    if (this.props.state.firstOpen) {
-      this.setState({ ...this.state, open: true });
-    }
-    console.log(this.props.state.firstOpen);
-  };
-
   render = () => {
     const { Header, MenuBar, Logo, Cancel } = Headers;
     const { Article, InformationContainer, Title } = Articles;
