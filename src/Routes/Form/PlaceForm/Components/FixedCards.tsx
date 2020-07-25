@@ -1,7 +1,5 @@
 import React from "react";
 import { Articles } from "../PlaceFormStyle";
-import styled from "styled-components";
-
 interface IProps {
   onChangeAnswer: Function;
   state: any;
