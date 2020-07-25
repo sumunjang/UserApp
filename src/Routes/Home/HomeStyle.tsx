@@ -85,7 +85,7 @@ const SearchInput = styled.input`
   }
 `;
 const SearchHistory = styled.div`
-  margin-top: 60px;
+  margin-top: 250px;
 `;
 
 const Title = styled.div`

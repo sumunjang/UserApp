@@ -35,6 +35,7 @@ const Article = styled.article`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 100px;
 `;
 const Photo = styled.div``;
 const InformationContainer = styled.div`
