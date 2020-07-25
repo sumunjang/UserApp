@@ -122,7 +122,6 @@ class PlaceFormContainer extends React.Component<IProps> {
   componentDidMount = async () => {
     const response = await GetForm((this.props.match.params as any).placeid);
     const data = (response.data as { requestForm: [] }).requestForm;
-    console.log("data : ", data);
     this.setState({
       ...this.state,
       questions: data,
@@ -133,11 +132,6 @@ class PlaceFormContainer extends React.Component<IProps> {
         };
       }),
     });
-
-    if (this.state.answers[0].answer !== "") {
-      this.setState({ ...this.state, firstOpen: true });
-    }
-    console.log(this.state);
 
     this.setState({
       ...this.state,

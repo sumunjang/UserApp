@@ -26,6 +26,17 @@ export default class PlaceCard extends React.Component<IProps> {
     return (
       <>
         {this.props.questions.map((question) => {
+          let idindex = 0;
+          (this.props.state.answers as Array<string>).forEach((answer: any) => {
+            console.log(question.questionid, answer.questionid);
+            if (question.questionid === parseInt(answer.questionid)) {
+              idindex = question.questionid;
+            }
+          });
+
+          console.log(idindex);
+
+          console.log(idindex);
           return (
             <UserInformationContainer>
               <IdContainer>{question.questionid}</IdContainer>
@@ -33,8 +44,8 @@ export default class PlaceCard extends React.Component<IProps> {
               <VisitTime>
                 <input
                   value={
-                    this.props.state.answers[question.questionid - 1] &&
-                    this.props.state.answers[question.questionid - 1].answer
+                    this.props.state.answers[idindex] &&
+                    this.props.state.answers[idindex].answer
                   }
                   onChange={(e: React.ChangeEvent) => {
                     this.props.onChangeAnswer(e, question.questionid);
