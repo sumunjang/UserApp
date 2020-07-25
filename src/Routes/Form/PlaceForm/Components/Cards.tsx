@@ -27,16 +27,19 @@ export default class PlaceCard extends React.Component<IProps> {
       <>
         {this.props.questions.map((question) => {
           let idindex = 0;
+          let targetindex = 0;
           (this.props.state.answers as Array<string>).forEach((answer: any) => {
             console.log(question.questionid, answer.questionid);
             if (question.questionid === parseInt(answer.questionid)) {
-              idindex = question.questionid;
+              targetindex = idindex;
+            } else {
+              idindex += 1;
             }
           });
 
           console.log(idindex);
-
-          console.log(idindex);
+          console.log(targetindex);
+          console.log(this.props.state.answers[idindex]);
           return (
             <UserInformationContainer>
               <IdContainer>{question.questionid}</IdContainer>
