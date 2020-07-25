@@ -4,12 +4,6 @@ import MenuDrawer from "../../Home/Components/MenuDrawer";
 import { Container, Headers, Articles, Navs } from "./PlaceFormStyle";
 import Cards from "./Components/Cards";
 import FixedCards from "./Components/FixedCards";
-import { Collapse } from "@material-ui/core";
-import { ListItem, ListItemIcon, List } from "@material-ui/core";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import ListItemText from "@material-ui/core/ListItemText";
-import ExpandLess from "@material-ui/icons/ExpandLess";
-import ExpandMore from "@material-ui/icons/ExpandMore";
 
 interface IState {
   answers: Array<string>;
@@ -47,14 +41,7 @@ export default class PlaceFormPresenter extends React.Component<
 
   render = () => {
     const { Header, MenuBar, Logo, Cancel } = Headers;
-    const {
-      Article,
-      InformationContainer,
-      Title,
-      BtnContainer,
-      BtnFold,
-      BtnSpared,
-    } = Articles;
+    const { Article, InformationContainer, Title } = Articles;
     const { Nav, SubmitForm } = Navs;
 
     return (

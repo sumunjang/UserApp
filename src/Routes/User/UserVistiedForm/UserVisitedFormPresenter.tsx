@@ -20,10 +20,6 @@ export default class UserVisitedFormPresenter extends React.Component<IProps> {
       VisitTime,
       PlaceInformationContainer,
       PlaceName,
-      PlaceAddress,
-      BtnContainer,
-      BtnFold,
-      BtnSpared,
     } = Articles;
 
     const { requestForm } = this.props.visitInformation;

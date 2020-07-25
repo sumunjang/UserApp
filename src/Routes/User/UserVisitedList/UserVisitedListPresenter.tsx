@@ -3,7 +3,6 @@ import Routes from "../../../Components/Routes";
 import { Conatiner, Headers, Articles } from "./UserVistiedListStyle";
 import MenuDrawer from "../../Home/Components/MenuDrawer";
 import Card from "./Components/Card";
-import API from "../../../Components/API";
 
 interface IProps {
   push: Function;
